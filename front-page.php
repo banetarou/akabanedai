@@ -9,13 +9,13 @@ global $post;
 
 get_header();
 
-$hero_title             = get_theme_mod( 'achirabe_front_hero_title', get_bloginfo( 'name' ) );
+$hero_title             = get_theme_mod( 'achirabe_front_hero_title', __( 'DAI AKABANE', 'achirabe' ) );
 $hero_subtitle          = get_theme_mod( 'achirabe_front_hero_subtitle', get_bloginfo( 'description' ) );
 $hero_button_label      = get_theme_mod( 'achirabe_front_hero_button_label', __( 'View Works', 'achirabe' ) );
 $hero_button_url        = get_theme_mod( 'achirabe_front_hero_button_url', '#' );
 $hero_image_id          = get_theme_mod( 'achirabe_front_hero_image' );
 $hero_image_url         = $hero_image_id ? wp_get_attachment_image_url( $hero_image_id, 'full' ) : '';
-$intro_title            = get_theme_mod( 'achirabe_front_intro_title', __( 'Profile', 'achirabe' ) );
+$intro_title            = get_theme_mod( 'achirabe_front_intro_title', __( 'ABOUT', 'achirabe' ) );
 $intro_text             = get_theme_mod( 'achirabe_front_intro_text', '' );
 $works_title            = get_theme_mod( 'achirabe_front_works_title', __( 'Works', 'achirabe' ) );
 $works_description      = get_theme_mod( 'achirabe_front_works_description', __( 'Selected compositions and arrangements.', 'achirabe' ) );
@@ -53,7 +53,7 @@ $news_link_url          = get_permalink( get_option( 'page_for_posts' ) );
                 </div>
         </section>
 
-        <section class="front-section front-intro">
+        <section class="front-section front-intro" id="about">
                 <div class="front-section__inner">
                         <?php if ( $intro_title ) : ?>
                                 <div class="front-section__header">

@@ -44,7 +44,7 @@ function achirabe_customize_register( $wp_customize ) {
         $wp_customize->add_setting(
                 'achirabe_front_hero_title',
                 array(
-                        'default'           => __( 'Nishiyama Isao', 'achirabe' ),
+                        'default'           => __( 'DAI AKABANE', 'achirabe' ),
                         'sanitize_callback' => 'sanitize_text_field',
                         'transport'         => 'postMessage',
                 )
@@ -132,7 +132,7 @@ function achirabe_customize_register( $wp_customize ) {
         $wp_customize->add_setting(
                 'achirabe_front_intro_title',
                 array(
-                        'default'           => __( 'Profile', 'achirabe' ),
+                        'default'           => __( 'ABOUT', 'achirabe' ),
                         'sanitize_callback' => 'sanitize_text_field',
                 )
         );
