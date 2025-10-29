@@ -832,6 +832,32 @@ textarea {
 	max-width: 100%;
 }
 
+.widget_recent_images .recent-images-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+}
+
+.widget_recent_images .recent-image-link {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	aspect-ratio: 1 / 1;
+}
+
+.widget_recent_images .recent-image-link img {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+	.widget_recent_images .recent-images-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
 /* Media
 --------------------------------------------- */
 .page-content .wp-smiley,
