@@ -7,49 +7,56 @@
  * @package achirabe
  */
 
-$recent_images = get_posts(
-	array(
-		'post_type'      => 'attachment',
-		'post_mime_type' => 'image',
-		'post_status'    => 'inherit',
-		'posts_per_page' => 12,
-		'orderby'        => 'date',
-		'order'          => 'DESC',
-		'post_parent__not_in' => array( 0 ),
-	)
+$works_query = new WP_Query(
+        array(
+                'post_type'           => 'works',
+                'posts_per_page'      => 3,
+                'no_found_rows'       => true,
+                'ignore_sticky_posts' => true,
+        )
 );
 
-if ( empty( $recent_images ) ) {
-	return;
+if ( ! $works_query->have_posts() ) {
+        return;
 }
 
-$recent_images = array_values( $recent_images );
+$works_markup = '';
+
+while ( $works_query->have_posts() ) {
+        $works_query->the_post();
+
+        $thumbnail_html = get_the_post_thumbnail(
+                get_the_ID(),
+                'achirabe-works-square',
+                array(
+                        'class'   => 'recent-works-image',
+                        'loading' => 'lazy',
+                )
+        );
+
+        if ( ! $thumbnail_html ) {
+                continue;
+        }
+
+        $works_markup .= sprintf(
+                '<a class="recent-works-link" href="%1$s">%2$s</a>',
+                esc_url( get_permalink() ),
+                $thumbnail_html
+        );
+}
+
+wp_reset_postdata();
+
+if ( '' === $works_markup ) {
+        return;
+}
 ?>
 
 <aside id="secondary" class="widget-area">
-	<section class="widget widget_recent_images">
-		<h2 class="widget-title"><?php esc_html_e( 'Recent Photos', 'achirabe' ); ?></h2>
-		<div class="recent-images-grid">
-			<?php
-			foreach ( $recent_images as $image ) :
-				$image_html = wp_get_attachment_image(
-					$image->ID,
-					'medium_large',
-					false,
-					array(
-						'class'   => 'recent-image',
-						'loading' => 'lazy',
-					)
-				);
-
-				if ( ! $image_html ) {
-					continue;
-				}
-				?>
-				<a class="recent-image-link" href="<?php echo esc_url( wp_get_attachment_url( $image->ID ) ); ?>">
-					<?php echo $image_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</a>
-			<?php endforeach; ?>
-		</div>
-	</section>
+        <section class="widget widget_recent_works">
+                <h2 class="widget-title"><?php esc_html_e( 'Works', 'achirabe' ); ?></h2>
+                <div class="recent-works-grid">
+                        <?php echo $works_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                </div>
+        </section>
 </aside><!-- #secondary -->
