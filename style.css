@@ -641,6 +641,34 @@ textarea {
 # Layouts
 --------------------------------------------------------------*/
 
+.site-layout {
+        display: flex;
+        min-height: 100vh;
+}
+
+.site-header {
+        flex: 0 0 200px;
+        width: 200px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+}
+
+.site-main-column {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+}
+
+.site-main-column > * {
+        width: 100%;
+}
+
+#primary {
+        flex: 1 1 auto;
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
@@ -693,8 +721,21 @@ textarea {
 }
 
 .main-navigation a {
-	display: block;
-	text-decoration: none;
+        display: block;
+        text-decoration: none;
+}
+
+.site-header .main-navigation {
+        flex: 1 1 auto;
+        width: 100%;
+}
+
+.site-header .main-navigation ul {
+        flex-direction: column;
+}
+
+.site-header .main-navigation.toggled ul {
+        display: flex;
 }
 
 /* Small menu. */
@@ -709,9 +750,13 @@ textarea {
 		display: none;
 	}
 
-	.main-navigation ul {
-		display: flex;
-	}
+        .main-navigation ul {
+                display: flex;
+        }
+
+        .site-header .main-navigation ul {
+                display: flex;
+        }
 }
 
 .site-main .comment-navigation,
