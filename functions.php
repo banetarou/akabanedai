@@ -46,6 +46,7 @@ function achirabe_setup() {
          */
         add_theme_support( 'post-thumbnails' );
         add_image_size( 'achirabe-showcase', 1440, 810, true );
+        add_image_size( 'achirabe-works-square', 600, 600, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(

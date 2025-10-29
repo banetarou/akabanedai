@@ -77,15 +77,6 @@ $news_link_url          = get_permalink( get_option( 'page_for_posts' ) );
 
         <section class="front-section front-works">
                 <div class="front-section__inner">
-                        <div class="front-section__header">
-                                <?php if ( $works_title ) : ?>
-                                        <h2 class="front-section__title"><?php echo esc_html( $works_title ); ?></h2>
-                                <?php endif; ?>
-                                <?php if ( $works_description ) : ?>
-                                        <p class="front-section__description"><?php echo esc_html( $works_description ); ?></p>
-                                <?php endif; ?>
-                        </div>
-
                         <?php
                         $works_query = new WP_Query(
                                 array(
@@ -97,42 +88,60 @@ $news_link_url          = get_permalink( get_option( 'page_for_posts' ) );
                         );
                         ?>
 
-                        <div class="front-grid front-grid--works">
-                                <?php if ( $works_query->have_posts() ) : ?>
-                                        <?php
-                                        while ( $works_query->have_posts() ) :
-                                                $works_query->the_post();
-                                                ?>
-                                                <article id="post-<?php the_ID(); ?>" <?php post_class( 'front-card front-card--work' ); ?>>
-                                                        <a class="front-card__link" href="<?php the_permalink(); ?>">
-                                                                <div class="front-card__thumbnail">
-                                                                        <?php if ( has_post_thumbnail() ) : ?>
-                                                                                <?php the_post_thumbnail( 'medium_large' ); ?>
-                                                                        <?php endif; ?>
-                                                                </div>
-                                                                <div class="front-card__content">
-                                                                        <h3 class="front-card__title"><?php the_title(); ?></h3>
-                                                                        <?php if ( has_excerpt() ) : ?>
-                                                                                <p class="front-card__excerpt"><?php echo wp_kses_post( wp_trim_words( get_the_excerpt(), 20, '…' ) ); ?></p>
-                                                                        <?php endif; ?>
-                                                                        <span class="front-card__arrow" aria-hidden="true">&rarr;</span>
-                                                                </div>
-                                                        </a>
-                                                </article>
-                                                <?php
-                                        endwhile;
-                                        wp_reset_postdata();
-                                        ?>
-                                <?php else : ?>
-                                        <p class="front-section__empty"><?php esc_html_e( 'No works have been published yet.', 'achirabe' ); ?></p>
-                                <?php endif; ?>
-                        </div>
+                        <div class="front-works__columns">
+                                <div class="front-works__column front-works__column--text">
+                                        <?php if ( $works_title || $works_description ) : ?>
+                                                <div class="front-section__header front-works__header">
+                                                        <?php if ( $works_title ) : ?>
+                                                                <h2 class="front-section__title"><?php echo esc_html( $works_title ); ?></h2>
+                                                        <?php endif; ?>
+                                                        <?php if ( $works_description ) : ?>
+                                                                <p class="front-section__description"><?php echo esc_html( $works_description ); ?></p>
+                                                        <?php endif; ?>
+                                                </div>
+                                        <?php endif; ?>
 
-                        <?php if ( $works_link_label && $works_link_url ) : ?>
-                                <div class="front-section__footer">
-                                        <a class="front-section__link" href="<?php echo esc_url( $works_link_url ); ?>"><?php echo esc_html( $works_link_label ); ?></a>
+                                        <?php if ( $works_link_label && $works_link_url ) : ?>
+                                                <div class="front-section__footer front-works__footer">
+                                                        <a class="front-section__link" href="<?php echo esc_url( $works_link_url ); ?>"><?php echo esc_html( $works_link_label ); ?></a>
+                                                </div>
+                                        <?php endif; ?>
                                 </div>
-                        <?php endif; ?>
+
+                                <div class="front-works__column front-works__column--gallery">
+                                        <?php
+                                        $works_gallery_html = '';
+
+                                        if ( $works_query->have_posts() ) {
+                                                ob_start();
+
+                                                while ( $works_query->have_posts() ) {
+                                                        $works_query->the_post();
+
+                                                        if ( has_post_thumbnail() ) {
+                                                                ?>
+                                                                <a class="front-works__image" href="<?php the_permalink(); ?>">
+                                                                        <?php the_post_thumbnail( 'achirabe-works-square' ); ?>
+                                                                </a>
+                                                                <?php
+                                                        }
+                                                }
+
+                                                $works_gallery_html = trim( ob_get_clean() );
+                                        }
+
+                                        wp_reset_postdata();
+
+                                        if ( $works_gallery_html ) {
+                                                echo '<div class="front-works__gallery">' . $works_gallery_html . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                        } else {
+                                                ?>
+                                                <p class="front-section__empty front-works__empty"><?php esc_html_e( 'No works have been published yet.', 'achirabe' ); ?></p>
+                                                <?php
+                                        }
+                                        ?>
+                                </div>
+                        </div>
                 </div>
         </section>
 
