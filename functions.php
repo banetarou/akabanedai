@@ -39,12 +39,13 @@ function achirabe_setup() {
 		*/
 	add_theme_support( 'title-tag' );
 
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
-	add_theme_support( 'post-thumbnails' );
+        /*
+         * Enable support for Post Thumbnails on posts and pages.
+         *
+         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+         */
+        add_theme_support( 'post-thumbnails' );
+        add_image_size( 'achirabe-showcase', 1440, 810, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
@@ -138,7 +139,8 @@ add_action( 'widgets_init', 'achirabe_widgets_init' );
  * Enqueue scripts and styles.
  */
 function achirabe_scripts() {
-	wp_enqueue_style( 'achirabe-style', get_stylesheet_uri(), array(), _S_VERSION );
+        wp_enqueue_style( 'achirabe-fonts', 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap', array(), null );
+        wp_enqueue_style( 'achirabe-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'achirabe-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'achirabe-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );

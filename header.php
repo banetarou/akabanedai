@@ -26,37 +26,48 @@
         <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'achirabe' ); ?></a>
 
         <div class="site-layout">
-                <header id="masthead" class="site-header">
-                        <div class="site-branding">
-                                <?php
-                                the_custom_logo();
-                                if ( is_front_page() && is_home() ) :
-                                        ?>
-                                        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                                        <?php
-                                else :
-                                        ?>
-                                        <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-                                        <?php
-                                endif;
-                                $achirabe_description = get_bloginfo( 'description', 'display' );
-                                if ( $achirabe_description || is_customize_preview() ) :
-                                        ?>
-                                        <p class="site-description"><?php echo $achirabe_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-                                <?php endif; ?>
-                        </div><!-- .site-branding -->
+               <header id="masthead" class="site-header">
+                       <div class="site-header-inner">
+                               <div class="site-branding">
+                                       <?php
+                                       the_custom_logo();
+                                       if ( is_front_page() && is_home() ) :
+                                               ?>
+                                               <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                                               <?php
+                                       else :
+                                               ?>
+                                               <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                                               <?php
+                                       endif;
+                                       $achirabe_description = get_bloginfo( 'description', 'display' );
+                                       if ( $achirabe_description || is_customize_preview() ) :
+                                               ?>
+                                               <p class="site-description"><?php echo $achirabe_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+                                       <?php endif; ?>
+                               </div><!-- .site-branding -->
 
-                        <nav id="site-navigation" class="main-navigation">
-                                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'achirabe' ); ?></button>
-                                <?php
-                                wp_nav_menu(
-                                        array(
-                                                'theme_location' => 'menu-1',
-                                                'menu_id'        => 'primary-menu',
-                                        )
-                                );
-                                ?>
-                        </nav><!-- #site-navigation -->
-                </header><!-- #masthead -->
+                               <div class="site-header-controls">
+                                       <nav id="site-navigation" class="main-navigation">
+                                               <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'achirabe' ); ?></button>
+                                               <?php
+                                               wp_nav_menu(
+                                                       array(
+                                                               'theme_location' => 'menu-1',
+                                                               'menu_id'        => 'primary-menu',
+                                                       )
+                                               );
+                                               ?>
+                                       </nav><!-- #site-navigation -->
+                                       <?php
+                                       $achirabe_header_cta_label = get_theme_mod( 'achirabe_header_cta_label', '' );
+                                       $achirabe_header_cta_url   = get_theme_mod( 'achirabe_header_cta_url', '' );
+                                       if ( $achirabe_header_cta_label && $achirabe_header_cta_url ) :
+                                               ?>
+                                               <a class="site-header-cta" href="<?php echo esc_url( $achirabe_header_cta_url ); ?>"><?php echo esc_html( $achirabe_header_cta_label ); ?></a>
+                                       <?php endif; ?>
+                               </div>
+                       </div>
+               </header><!-- #masthead -->
 
                 <div class="site-main-column">
