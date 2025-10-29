@@ -150,6 +150,94 @@ function achirabe_scripts() {
 add_action( 'wp_enqueue_scripts', 'achirabe_scripts' );
 
 /**
+ * Register custom post types.
+ */
+function achirabe_register_custom_post_types() {
+	$works_labels = array(
+		'name'                  => _x( 'Works', 'Post Type General Name', 'achirabe' ),
+		'singular_name'         => _x( 'Work', 'Post Type Singular Name', 'achirabe' ),
+		'menu_name'             => _x( 'Works', 'Admin Menu text', 'achirabe' ),
+		'name_admin_bar'        => _x( 'Work', 'Add New on Toolbar', 'achirabe' ),
+		'add_new'               => __( 'Add New', 'achirabe' ),
+		'add_new_item'          => __( 'Add New Work', 'achirabe' ),
+		'new_item'              => __( 'New Work', 'achirabe' ),
+		'edit_item'             => __( 'Edit Work', 'achirabe' ),
+		'view_item'             => __( 'View Work', 'achirabe' ),
+		'all_items'             => __( 'All Works', 'achirabe' ),
+		'search_items'          => __( 'Search Works', 'achirabe' ),
+		'parent_item_colon'     => __( 'Parent Works:', 'achirabe' ),
+		'not_found'             => __( 'No works found.', 'achirabe' ),
+		'not_found_in_trash'    => __( 'No works found in Trash.', 'achirabe' ),
+		'featured_image'        => __( 'Work Featured Image', 'achirabe' ),
+		'set_featured_image'    => __( 'Set work featured image', 'achirabe' ),
+		'remove_featured_image' => __( 'Remove work featured image', 'achirabe' ),
+		'use_featured_image'    => __( 'Use as work featured image', 'achirabe' ),
+		'archives'              => __( 'Work archives', 'achirabe' ),
+		'insert_into_item'      => __( 'Insert into work', 'achirabe' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this work', 'achirabe' ),
+		'filter_items_list'     => __( 'Filter works list', 'achirabe' ),
+		'items_list_navigation' => __( 'Works list navigation', 'achirabe' ),
+		'items_list'            => __( 'Works list', 'achirabe' ),
+	);
+
+	$personal_labels = array(
+		'name'                  => _x( 'Personal', 'Post Type General Name', 'achirabe' ),
+		'singular_name'         => _x( 'Personal', 'Post Type Singular Name', 'achirabe' ),
+		'menu_name'             => _x( 'Personal', 'Admin Menu text', 'achirabe' ),
+		'name_admin_bar'        => _x( 'Personal', 'Add New on Toolbar', 'achirabe' ),
+		'add_new'               => __( 'Add New', 'achirabe' ),
+		'add_new_item'          => __( 'Add New Personal', 'achirabe' ),
+		'new_item'              => __( 'New Personal', 'achirabe' ),
+		'edit_item'             => __( 'Edit Personal', 'achirabe' ),
+		'view_item'             => __( 'View Personal', 'achirabe' ),
+		'all_items'             => __( 'All Personal', 'achirabe' ),
+		'search_items'          => __( 'Search Personal', 'achirabe' ),
+		'parent_item_colon'     => __( 'Parent Personal:', 'achirabe' ),
+		'not_found'             => __( 'No personal posts found.', 'achirabe' ),
+		'not_found_in_trash'    => __( 'No personal posts found in Trash.', 'achirabe' ),
+		'featured_image'        => __( 'Personal Featured Image', 'achirabe' ),
+		'set_featured_image'    => __( 'Set personal featured image', 'achirabe' ),
+		'remove_featured_image' => __( 'Remove personal featured image', 'achirabe' ),
+		'use_featured_image'    => __( 'Use as personal featured image', 'achirabe' ),
+		'archives'              => __( 'Personal archives', 'achirabe' ),
+		'insert_into_item'      => __( 'Insert into personal post', 'achirabe' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this personal post', 'achirabe' ),
+		'filter_items_list'     => __( 'Filter personal list', 'achirabe' ),
+		'items_list_navigation' => __( 'Personal list navigation', 'achirabe' ),
+		'items_list'            => __( 'Personal list', 'achirabe' ),
+	);
+
+	register_post_type(
+		'works',
+		array(
+			'labels'             => $works_labels,
+			'public'             => true,
+			'has_archive'        => true,
+			'menu_position'      => 5,
+			'show_in_rest'       => true,
+			'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'author', 'revisions' ),
+			'rewrite'            => array( 'slug' => 'works' ),
+			'publicly_queryable' => true,
+		)
+	);
+
+	register_post_type(
+		'personal',
+		array(
+			'labels'             => $personal_labels,
+			'public'             => true,
+			'has_archive'        => true,
+			'menu_position'      => 6,
+			'show_in_rest'       => true,
+			'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'author', 'revisions' ),
+			'rewrite'            => array( 'slug' => 'personal' ),
+			'publicly_queryable' => true,
+		)
+	);
+}
+add_action( 'init', 'achirabe_register_custom_post_types' );
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
