@@ -11,9 +11,9 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'achirabe' ) ); ?>">
+        <footer id="colophon" class="site-footer">
+                <div class="site-info">
+                        <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'achirabe' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. WordPress. */
 				printf( esc_html__( 'Proudly powered by %s', 'achirabe' ), 'WordPress' );
@@ -25,7 +25,9 @@
 				printf( esc_html__( 'Theme: %1$s by %2$s.', 'achirabe' ), 'achirabe', '<a href="http://underscores.me/">Underscores.me</a>' );
 				?>
 		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+        </footer><!-- #colophon -->
+                </div><!-- .site-main-column -->
+        </div><!-- .site-layout -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
