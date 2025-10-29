@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>はじめに | 柔らかな手ざわりのプロジェクト</title>
+  <style>
+    :root {
+      color-scheme: only light;
+      --base-font: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho", Georgia, serif;
+      --accent-color: #333333;
+      --muted-color: #666666;
+      --line-height: 1.9;
+      --max-width: 900px;
+      --page-bg: #f8f8f6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--base-font);
+      background-color: var(--page-bg);
+      color: var(--accent-color);
+      letter-spacing: 0.03em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0) 100%);
+      mix-blend-mode: lighten;
+      opacity: 0.45;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 7rem 1.8rem 6rem;
+    }
+
+    header {
+      margin-bottom: 6rem;
+      text-align: center;
+    }
+
+    header p {
+      margin: 0 auto 1.8rem;
+      font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+      line-height: 2.1;
+      color: var(--muted-color);
+    }
+
+    header .subtitle {
+      display: inline-block;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      font-size: 0.65rem;
+      color: rgba(0, 0, 0, 0.35);
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.4rem);
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.3;
+      letter-spacing: 0.16em;
+    }
+
+    section {
+      margin-bottom: 5.5rem;
+      position: relative;
+    }
+
+    section::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 1px;
+      background-color: rgba(0,0,0,0.15);
+      margin: 4rem auto 0;
+    }
+
+    section:last-of-type::after {
+      display: none;
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      margin: 0 0 2.5rem;
+      letter-spacing: 0.2em;
+      text-align: center;
+    }
+
+    p {
+      margin: 0 0 2.4rem;
+      font-size: clamp(1rem, 1.6vw, 1.1rem);
+      line-height: var(--line-height);
+    }
+
+    .lead-text {
+      margin-top: 3rem;
+      font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+      line-height: 2.2;
+      color: rgba(0, 0, 0, 0.75);
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.5);
+      letter-spacing: 0.12em;
+    }
+
+    .text-block {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .align-right {
+      text-align: right;
+      margin-top: -1.5rem;
+      color: rgba(0,0,0,0.45);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+      padding-bottom: 2px;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      border-color: rgba(0,0,0,0.45);
+      color: rgba(0,0,0,0.65);
+    }
+
+    footer {
+      margin-top: 6rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(0,0,0,0.45);
+      padding-bottom: 4rem;
+    }
+
+    /* フェードインアニメーション */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        letter-spacing: 0.02em;
+      }
+
+      header {
+        margin-bottom: 5rem;
+      }
+
+      section {
+        margin-bottom: 4.8rem;
+      }
+
+      section::after {
+        margin: 3.2rem auto 0;
+      }
+
+      .align-right {
+        margin-top: -0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ファーストビュー -->
+  <main>
+    <header class="fade-up">
+      <span class="subtitle">introduction</span>
+      <h1>息をひとつ置いて、<br>世界の輪郭にふれる。</h1>
+      <p class="lead-text">都市のどこかで静かに芽吹く声と、まだ名前のない動き。<br>私たちはそれらを抱きとめ、手渡すための余白として存在しています。</p>
+      <p class="note">柔らかな手ざわりのプロジェクト</p>
+    </header>
+
+    <!-- 団体紹介 -->
+    <section class="fade-up">
+      <h2>団体紹介</h2>
+      <div class="text-block">
+        <p>「柔らかな手ざわりのプロジェクト」は、アートと社会実装を横断しながら、日常に潜む微細な気配をすくい上げることを大切にしています。声にならない輪郭、かすかな匂い、消えてしまいそうな出会い。そうしたものに、そっと光を差し込むための実験を続けています。</p>
+        <p>メンバーはアーティスト、研究者、福祉現場の実践者など多様。各地で生まれる小さな活動をひとつずつ編み合わせ、まだ見ぬ未来の社会像を手探りで描いています。</p>
+      </div>
+    </section>
+
+    <!-- 活動趣旨 -->
+    <section class="fade-up">
+      <h2>活動趣旨</h2>
+      <div class="text-block">
+        <p>私たちの活動は「耳をすませること」から始まります。地域に暮らす人びとの声を丁寧に聞き取り、そこから浮かび上がる課題や願いに寄り添いながら、表現のかたちを探っていきます。展覧会やワークショップ、対話の場など、形態はさまざまですが、どの場面でも大切にしているのは“ともにいる”という態度です。</p>
+        <p>活動を通して、社会の中に静かな余白をつくること。誰かの気づきを引き出し、まなざしの重なりを増やすこと。そうした動きを、丁寧に記録し次へと手渡していきたいと考えています。</p>
+      </div>
+    </section>
+
+    <!-- これからの展望 -->
+    <section class="fade-up">
+      <h2>これからの展望</h2>
+      <div class="text-block">
+        <p>これまで出会ってきた人たちと関係を深めながら、さらに多様な領域との連携を目指しています。福祉や教育、地域づくりなど、異なるフィールドが交差することで、まだ見ぬ景色が立ち上がると信じています。</p>
+        <p>今後はオンライン・アーカイブの拡充に加え、移動型の小さなラボを各地で展開予定です。移動先ごとに土地の空気を感じ、共に過ごす時間を紡ぎながら、記憶の余白を更新していきます。</p>
+        <p class="align-right">―― 柔らかな手ざわりのプロジェクト</p>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="fade-up">
+      <h2>お問い合わせ</h2>
+      <div class="text-block">
+        <p>プロジェクトへの参加や取材のご相談は、<a href="mailto:hello@example.com">hello@example.com</a> までご連絡ください。活動記録や最新のイベント情報は、<a href="#">ニュースレター</a>でもお届けしています。</p>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+      <p>&copy; 2024 柔らかな手ざわりのプロジェクト</p>
+    </footer>
+  </main>
+
+  <script>
+    // スクロール時のフェードイン制御
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('.fade-up').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
