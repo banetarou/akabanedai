@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>固定サイドバーとギャラリーのデモ</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="site-shell">
+        <aside class="site-sidebar" role="complementary">
+            <!-- 左カラム：固定サイドバー -->
+            <div class="sidebar-inner">
+                <p class="site-tagline">Art Director / Designer</p>
+                <h1 class="site-title">NISHIYAMA ISAO</h1>
+                <nav class="site-nav" aria-label="サイドバー ナビゲーション">
+                    <ul>
+                        <li><a href="#intro">Intro</a></li>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#exhibition">Exhibition</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="sidebar-footer">
+                    <p>© 2024 NISHIYAMA ISAO</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="site-gallery" role="main">
+            <!-- 右カラム：メインギャラリー -->
+            <section id="intro" class="gallery-section">
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/1200/800?random=1" alt="Monochrome Landscape" />
+                    <figcaption>
+                        <h2 class="work-title">Monochrome Landscape</h2>
+                        <p class="work-description">静かな山並みを光と影で表現した、ミニマルなモノクロ作品。</p>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section id="works" class="gallery-section">
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/1200/800?random=2" alt="Floating Geometry" />
+                    <figcaption>
+                        <h2 class="work-title">Floating Geometry</h2>
+                        <p class="work-description">幾何学形態と柔らかいグラデーションを組み合わせたシリーズ。</p>
+                    </figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/1200/800?random=3" alt="Silent Garden" />
+                    <figcaption>
+                        <h2 class="work-title">Silent Garden</h2>
+                        <p class="work-description">静寂の庭をテーマに、色彩とテクスチャを抑えた表現を追求した作品。</p>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section id="exhibition" class="gallery-section">
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/1200/800?random=4" alt="Echoes of Light" />
+                    <figcaption>
+                        <h2 class="work-title">Echoes of Light</h2>
+                        <p class="work-description">光の残響を、柔らかな色彩と広がる空間で描いた作品シリーズ。</p>
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section id="contact" class="gallery-section">
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/1200/800?random=5" alt="Studio Detail" />
+                    <figcaption>
+                        <h2 class="work-title">Studio Detail</h2>
+                        <p class="work-description">アトリエの一角を切り取ったビジュアル。作家の世界観を静かに伝えます。</p>
+                    </figcaption>
+                </figure>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
