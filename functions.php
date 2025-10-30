@@ -73,3 +73,4 @@ function minimal_gallery_primary_menu_fallback() {
 }
 
 require_once get_template_directory() . '/inc/intro-helpers.php';
+require_once get_template_directory() . '/inc/custom-post-types.php';
