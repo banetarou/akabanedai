@@ -799,6 +799,41 @@ textarea {
 	margin: 0 0 1.5em;
 }
 
+.works-grid {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.works-grid__item {
+	overflow: hidden;
+}
+
+.works-grid__link {
+	aspect-ratio: 4 / 3;
+	display: block;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.works-grid__image {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.works-grid__placeholder {
+	background-color: #f0f0f0;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
 /* Comments
 --------------------------------------------- */
 .comment-content a {
