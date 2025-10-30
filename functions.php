@@ -44,7 +44,17 @@ add_action( 'after_setup_theme', 'minimal_gallery_content_width', 0 );
  * Enqueue the main stylesheet for the theme.
  */
 function minimal_gallery_enqueue_assets() {
-    wp_enqueue_style( 'minimal-gallery-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+    $theme_version = wp_get_theme()->get( 'Version' );
+
+    wp_enqueue_style( 'minimal-gallery-style', get_stylesheet_uri(), array(), $theme_version );
+
+    wp_enqueue_script(
+        'minimal-gallery-fade-up',
+        get_template_directory_uri() . '/js/fade-up.js',
+        array(),
+        $theme_version,
+        true
+    );
 }
 add_action( 'wp_enqueue_scripts', 'minimal_gallery_enqueue_assets' );
 
@@ -61,3 +71,5 @@ function minimal_gallery_primary_menu_fallback() {
     );
     echo '</ul>';
 }
+
+require_once get_template_directory() . '/inc/intro-helpers.php';
