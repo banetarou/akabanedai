@@ -54,66 +54,58 @@ a:focus {
     padding: 72px 64px;
 }
 
-.site-frame {
-    display: grid;
-    grid-template-columns: minmax(220px, 320px) 1fr;
-    column-gap: 96px;
-    align-items: flex-start;
-}
-
-.site-sidebar {
-    position: sticky;
-    top: 72px;
-    align-self: start;
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25vw;
+    min-width: 260px;
+    height: 100vh;
+    background: #ffffff;
+    color: #111111;
+    padding: 48px 32px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 48px;
-    min-height: calc(100vh - 144px);
-}
-
-.site-branding {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    gap: 32px;
+    z-index: 100;
 }
 
 .site-title {
     margin: 0;
-    font-size: 1.85rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
+    font-family: "Yu Mincho", Georgia, serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
 }
 
 .site-title a {
+    color: #111111;
     text-decoration: none;
 }
 
-.site-description {
-    margin: 0;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
-}
-
-.site-navigation {
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
-}
-
-.site-menu {
+.site-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 12px;
+    line-height: 2;
 }
 
-.site-menu li {
-    margin: 0;
+.site-nav a {
+    color: #111111;
+    text-decoration: none;
 }
 
-.site-menu a {
-    padding-bottom: 4px;
+.site-nav a:hover,
+.site-nav a:focus {
+    color: #999999;
+    text-decoration: underline;
+}
+
+.site-frame {
+    margin-left: max(25vw, 260px);
 }
 
 .site-main {
@@ -196,32 +188,6 @@ footer.site-footer p {
         padding: 60px 48px;
     }
 
-    .site-frame {
-        column-gap: 64px;
-    }
-
-    .site-sidebar {
-        top: 60px;
-        min-height: calc(100vh - 120px);
-    }
-}
-
-@media (max-width: 900px) {
-    .wrapper {
-        padding: 48px 32px;
-    }
-
-    .site-frame {
-        grid-template-columns: 1fr;
-        row-gap: 48px;
-    }
-
-    .site-sidebar {
-        position: relative;
-        top: auto;
-        min-height: auto;
-    }
-
     .gallery-list {
         gap: 64px;
     }
@@ -235,6 +201,28 @@ footer.site-footer p {
     }
 }
 
+@media (max-width: 900px) {
+    .wrapper {
+        padding: 48px 32px;
+    }
+
+    .site-frame {
+        margin-left: 0;
+    }
+
+    .site-header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 24px;
+        min-width: 0;
+    }
+
+    .site-title {
+        font-size: 1.4rem;
+    }
+}
+
 @media (max-width: 540px) {
     body {
         font-size: 15px;
@@ -242,6 +230,10 @@ footer.site-footer p {
 
     .wrapper {
         padding: 40px 24px;
+    }
+
+    .site-header {
+        padding: 20px;
     }
 
     .gallery-item {
