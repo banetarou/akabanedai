@@ -28,7 +28,7 @@ add_action( 'after_setup_theme', 'minimal_gallery_setup' );
  * Define the global content width to align embeds with the design width.
  */
 function minimal_gallery_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'minimal_gallery_content_width', 1000 );
+    $GLOBALS['content_width'] = apply_filters( 'minimal_gallery_content_width', 1200 );
 }
 add_action( 'after_setup_theme', 'minimal_gallery_content_width', 0 );
 
