@@ -1,51 +1,113 @@
-.intro-page {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 120px 24px;
+/* ====== テンプレート専用調整 ====== */
+body.page-template-gallery-layout .site-header {
+  display: none;
+}
+
+body.page-template-gallery-layout #content {
+  padding: 0;
+}
+
+/* ====== 全体 ====== */
+body {
   background: #fff;
   color: #111;
+  font-family: "Yu Mincho", Georgia, serif;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+/* ====== レイアウト構成 ====== */
+.two-column-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+/* 左カラム（固定ナビ） */
+.site-sidebar {
+  width: 25vw;
+  min-width: 260px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #fff;
+  padding: 48px 32px;
   box-sizing: border-box;
 }
-
-.lead-text {
-  font-size: 1.4rem;
-  line-height: 2.0;
+.site-title {
+  font-size: 1.2rem;
   letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+.site-nav ul {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+.site-nav a {
+  color: #111;
+  text-decoration: none;
+  display: block;
+  padding: 0.4em 0;
+}
+.site-nav a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+
+/* 右カラム（ギャラリー） */
+.gallery-area {
+  margin-left: 25vw;
+  padding: 64px;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+.page-title {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
   text-align: center;
-  margin-bottom: 100px;
+  letter-spacing: 0.05em;
 }
 
-.intro-body p {
-  margin-bottom: 80px;
+/* ギャラリーグリッド */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
 }
-
-.intro-body .intro-section {
-  margin: 0;
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease;
 }
-
-.intro-body .intro-section > *:last-child {
-  margin-bottom: 0;
+.gallery-item img:hover {
+  opacity: 0.8;
 }
-
-.footer-note {
-  font-size: 0.8rem;
-  line-height: 1.6;
-  color: #666;
+.gallery-caption {
   text-align: center;
-  margin-top: 120px;
+  font-size: 0.9rem;
+  margin-top: 0.5em;
+  color: #444;
 }
 
+/* スマホ対応 */
 @media (max-width: 768px) {
-  .intro-page {
-    padding: 80px 16px;
+  .two-column-layout {
+    flex-direction: column;
   }
-
-  .lead-text {
-    font-size: 1.1rem;
-    margin-bottom: 60px;
+  .site-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 24px;
   }
-
-  .intro-body p {
-    margin-bottom: 60px;
+  .gallery-area {
+    margin-left: 0;
+    padding: 24px;
+  }
+  .gallery-grid {
+    gap: 20px;
   }
 }

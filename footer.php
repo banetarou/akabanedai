@@ -5,9 +5,11 @@
  * @package Akabane_Custom
  */
 ?>
-<footer id="colophon" class="site-footer">
-  <p class="footer-note">© Akabane Project</p>
-</footer>
+  </div><!-- #content -->
+  <footer id="colophon" class="site-footer">
+    <p class="footer-note">© Akabane Project</p>
+  </footer><!-- #colophon -->
+</div><!-- #page -->
 <?php wp_footer(); ?>
 </body>
 </html>

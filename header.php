@@ -13,8 +13,13 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header id="masthead" class="site-header">
-  <h1 class="site-title">
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-  </h1>
-</header>
+<div id="page" class="site">
+  <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'akabane' ); ?></a>
+  <header id="masthead" class="site-header">
+    <div class="site-header-inner">
+      <h1 class="site-title">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+      </h1>
+    </div>
+  </header><!-- #masthead -->
+  <div id="content" class="site-content">
