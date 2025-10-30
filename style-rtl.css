@@ -641,6 +641,38 @@ textarea {
 # Layouts
 --------------------------------------------------------------*/
 
+.site-layout {
+        display: flex;
+        min-height: 100vh;
+}
+
+.site-header-column {
+        flex: 0 0 200px;
+        width: 200px;
+}
+
+.site-main-column {
+        flex: 1 1 auto;
+        min-width: 0;
+}
+
+@media screen and (max-width: 782px) {
+        .site-layout {
+                flex-direction: column;
+        }
+
+        .site-header-column {
+                width: 100%;
+                flex-basis: auto;
+        }
+}
+
+@media screen and (min-width: 37.5em) {
+        .site-header-column .main-navigation ul {
+                flex-direction: column;
+        }
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
