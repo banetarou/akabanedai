@@ -5,6 +5,7 @@
 get_header();
 
 if ( have_posts() ) :
+    // Loop through posts and render gallery content.
     while ( have_posts() ) :
         the_post();
         ?>
