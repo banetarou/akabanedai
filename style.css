@@ -17,6 +17,12 @@ body {
   margin: 0;
 }
 
+#page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .site-header {
   padding: 32px 24px;
   text-align: left;
@@ -34,9 +40,12 @@ body {
   letter-spacing: 0.04em;
 }
 
+.site-content {
+  flex: 1 0 auto;
+}
+
 .site-footer {
   text-align: center;
-  margin-top: 120px;
   padding: 24px 0 48px;
 }
 
