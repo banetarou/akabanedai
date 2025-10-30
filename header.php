@@ -47,6 +47,26 @@
                                         <?php endif; ?>
                                 </div><!-- .site-branding -->
 
+                                <div class="works-navigation">
+                                        <p class="works-heading"><?php esc_html_e( 'Works', 'akabanedai' ); ?></p>
+                                        <?php
+                                        $akabanedai_work_categories = get_terms(
+                                                array(
+                                                        'taxonomy'   => 'work_category',
+                                                        'hide_empty' => false,
+                                                )
+                                        );
+
+                                        if ( ! is_wp_error( $akabanedai_work_categories ) && ! empty( $akabanedai_work_categories ) ) :
+                                                ?>
+                                                <ul class="works-category-list">
+                                                        <?php foreach ( $akabanedai_work_categories as $akabanedai_work_category ) : ?>
+                                                                <li><a href="<?php echo esc_url( get_term_link( $akabanedai_work_category ) ); ?>"><?php echo esc_html( $akabanedai_work_category->name ); ?></a></li>
+                                                        <?php endforeach; ?>
+                                                </ul>
+                                        <?php endif; ?>
+                                </div>
+
                                 <nav id="site-navigation" class="main-navigation">
                                         <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'akabanedai' ); ?></button>
                                         <?php
