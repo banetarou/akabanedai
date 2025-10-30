@@ -48,6 +48,55 @@
       padding: 7rem 1.8rem 6rem;
     }
 
+    .page-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 60ch) minmax(0, 1fr);
+      gap: clamp(3rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .content-column {
+      position: relative;
+    }
+
+    .image-column {
+      position: relative;
+    }
+
+    .image-stack {
+      position: sticky;
+      top: 4.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(1.8rem, 3vw, 2.6rem);
+    }
+
+    .image-card {
+      margin: 0;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    .image-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+
+    .image-card figcaption {
+      margin: 0;
+      padding: 1.6rem 1.8rem 1.9rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(0, 0, 0, 0.65);
+      letter-spacing: 0.08em;
+    }
+
     header {
       margin-bottom: 6rem;
       text-align: center;
@@ -123,8 +172,8 @@
     }
 
     .text-block {
-      max-width: 720px;
-      margin: 0 auto;
+      max-width: 68ch;
+      margin: 0;
     }
 
     .align-right {
@@ -167,9 +216,28 @@
       transform: translateY(0);
     }
 
+    @media (max-width: 960px) {
+      .page-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .image-stack {
+        position: static;
+        margin-top: 4rem;
+      }
+    }
+
     @media (max-width: 640px) {
       body {
         letter-spacing: 0.02em;
+      }
+
+      .image-stack {
+        margin-top: 3rem;
+      }
+
+      .image-card {
+        border-radius: 14px;
       }
 
       header {
@@ -193,53 +261,74 @@
 <body>
   <!-- ファーストビュー -->
   <main>
-    <header class="fade-up">
-      <span class="subtitle">introduction</span>
-      <h1>息をひとつ置いて、<br>世界の輪郭にふれる。</h1>
-      <p class="lead-text">都市のどこかで静かに芽吹く声と、まだ名前のない動き。<br>私たちはそれらを抱きとめ、手渡すための余白として存在しています。</p>
-      <p class="note">柔らかな手ざわりのプロジェクト</p>
-    </header>
+    <div class="page-layout">
+      <div class="content-column">
+        <header class="fade-up">
+          <span class="subtitle">introduction</span>
+          <h1>息をひとつ置いて、<br>世界の輪郭にふれる。</h1>
+          <p class="lead-text">都市のどこかで静かに芽吹く声と、まだ名前のない動き。<br>私たちはそれらを抱きとめ、手渡すための余白として存在しています。</p>
+          <p class="note">柔らかな手ざわりのプロジェクト</p>
+        </header>
 
-    <!-- 団体紹介 -->
-    <section class="fade-up">
-      <h2>団体紹介</h2>
-      <div class="text-block">
-        <p>「柔らかな手ざわりのプロジェクト」は、アートと社会実装を横断しながら、日常に潜む微細な気配をすくい上げることを大切にしています。声にならない輪郭、かすかな匂い、消えてしまいそうな出会い。そうしたものに、そっと光を差し込むための実験を続けています。</p>
-        <p>メンバーはアーティスト、研究者、福祉現場の実践者など多様。各地で生まれる小さな活動をひとつずつ編み合わせ、まだ見ぬ未来の社会像を手探りで描いています。</p>
+        <!-- 団体紹介 -->
+        <section class="fade-up">
+          <h2>団体紹介</h2>
+          <div class="text-block">
+            <p>「柔らかな手ざわりのプロジェクト」は、アートと社会実装を横断しながら、日常に潜む微細な気配をすくい上げることを大切にしています。声にならない輪郭、かすかな匂い、消えてしまいそうな出会い。そうしたものに、そっと光を差し込むための実験を続けています。</p>
+            <p>メンバーはアーティスト、研究者、福祉現場の実践者など多様。各地で生まれる小さな活動をひとつずつ編み合わせ、まだ見ぬ未来の社会像を手探りで描いています。</p>
+          </div>
+        </section>
+
+        <!-- 活動趣旨 -->
+        <section class="fade-up">
+          <h2>活動趣旨</h2>
+          <div class="text-block">
+            <p>私たちの活動は「耳をすませること」から始まります。地域に暮らす人びとの声を丁寧に聞き取り、そこから浮かび上がる課題や願いに寄り添いながら、表現のかたちを探っていきます。展覧会やワークショップ、対話の場など、形態はさまざまですが、どの場面でも大切にしているのは“ともにいる”という態度です。</p>
+            <p>活動を通して、社会の中に静かな余白をつくること。誰かの気づきを引き出し、まなざしの重なりを増やすこと。そうした動きを、丁寧に記録し次へと手渡していきたいと考えています。</p>
+          </div>
+        </section>
+
+        <!-- これからの展望 -->
+        <section class="fade-up">
+          <h2>これからの展望</h2>
+          <div class="text-block">
+            <p>これまで出会ってきた人たちと関係を深めながら、さらに多様な領域との連携を目指しています。福祉や教育、地域づくりなど、異なるフィールドが交差することで、まだ見ぬ景色が立ち上がると信じています。</p>
+            <p>今後はオンライン・アーカイブの拡充に加え、移動型の小さなラボを各地で展開予定です。移動先ごとに土地の空気を感じ、共に過ごす時間を紡ぎながら、記憶の余白を更新していきます。</p>
+            <p class="align-right">―― 柔らかな手ざわりのプロジェクト</p>
+          </div>
+        </section>
+
+        <!-- お問い合わせ -->
+        <section class="fade-up">
+          <h2>お問い合わせ</h2>
+          <div class="text-block">
+            <p>プロジェクトへの参加や取材のご相談は、<a href="mailto:hello@example.com">hello@example.com</a> までご連絡ください。活動記録や最新のイベント情報は、<a href="#">ニュースレター</a>でもお届けしています。</p>
+          </div>
+        </section>
+
+        <!-- フッター -->
+        <footer>
+          <p>&copy; 2024 柔らかな手ざわりのプロジェクト</p>
+        </footer>
       </div>
-    </section>
 
-    <!-- 活動趣旨 -->
-    <section class="fade-up">
-      <h2>活動趣旨</h2>
-      <div class="text-block">
-        <p>私たちの活動は「耳をすませること」から始まります。地域に暮らす人びとの声を丁寧に聞き取り、そこから浮かび上がる課題や願いに寄り添いながら、表現のかたちを探っていきます。展覧会やワークショップ、対話の場など、形態はさまざまですが、どの場面でも大切にしているのは“ともにいる”という態度です。</p>
-        <p>活動を通して、社会の中に静かな余白をつくること。誰かの気づきを引き出し、まなざしの重なりを増やすこと。そうした動きを、丁寧に記録し次へと手渡していきたいと考えています。</p>
-      </div>
-    </section>
-
-    <!-- これからの展望 -->
-    <section class="fade-up">
-      <h2>これからの展望</h2>
-      <div class="text-block">
-        <p>これまで出会ってきた人たちと関係を深めながら、さらに多様な領域との連携を目指しています。福祉や教育、地域づくりなど、異なるフィールドが交差することで、まだ見ぬ景色が立ち上がると信じています。</p>
-        <p>今後はオンライン・アーカイブの拡充に加え、移動型の小さなラボを各地で展開予定です。移動先ごとに土地の空気を感じ、共に過ごす時間を紡ぎながら、記憶の余白を更新していきます。</p>
-        <p class="align-right">―― 柔らかな手ざわりのプロジェクト</p>
-      </div>
-    </section>
-
-    <!-- お問い合わせ -->
-    <section class="fade-up">
-      <h2>お問い合わせ</h2>
-      <div class="text-block">
-        <p>プロジェクトへの参加や取材のご相談は、<a href="mailto:hello@example.com">hello@example.com</a> までご連絡ください。活動記録や最新のイベント情報は、<a href="#">ニュースレター</a>でもお届けしています。</p>
-      </div>
-    </section>
-
-    <!-- フッター -->
-    <footer>
-      <p>&copy; 2024 柔らかな手ざわりのプロジェクト</p>
-    </footer>
+      <aside class="image-column" aria-label="プロジェクトイメージ">
+        <div class="image-stack">
+          <figure class="image-card fade-up">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="柔らかな光の差し込む森の景色">
+            <figcaption>静かに揺れる木々と光の層が、呼吸のリズムを整える。</figcaption>
+          </figure>
+          <figure class="image-card fade-up">
+            <img src="https://images.unsplash.com/photo-1526481280695-3c46927fc197?auto=format&fit=crop&w=1200&q=80" alt="ワークショップで使われる素材のクローズアップ">
+            <figcaption>触れた人の記憶に残る素材を丁寧に選び、手渡していく。</figcaption>
+          </figure>
+          <figure class="image-card fade-up">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="対話の場で集う人々の様子">
+            <figcaption>小さな輪が広がり、まだ見ぬ風景をともに描き出す。</figcaption>
+          </figure>
+        </div>
+      </aside>
+    </div>
   </main>
 
   <script>
