@@ -9,12 +9,12 @@ get_header();
         <main id="primary" class="site-main">
 
                 <?php
-                if ( have_posts() ) :
-                        while ( have_posts() ) :
-                                the_post();
-                                get_template_part( 'template-parts/content', 'intro' );
-                        endwhile;
-                endif;
+                // if ( have_posts() ) :
+                //         while ( have_posts() ) :
+                //                 the_post();
+                //                 get_template_part( 'template-parts/content', 'intro' );
+                //         endwhile;
+                // endif;
 
                 $akabanedai_works_query = new WP_Query(
                         array(
@@ -66,5 +66,5 @@ get_header();
         </main><!-- #main -->
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();
