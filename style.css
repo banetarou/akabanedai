@@ -159,6 +159,97 @@ a:focus {
     letter-spacing: 0.08em;
 }
 
+.page-intro {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 0 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+.page-intro__entry {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.page-intro__header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+    align-items: center;
+}
+
+.page-intro__subtitle {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.45);
+}
+
+.page-intro__title {
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: 0.16em;
+}
+
+.page-intro__content {
+    display: grid;
+    gap: 2.6rem;
+    font-size: 1.05rem;
+    line-height: 2.1;
+    letter-spacing: 0.03em;
+    color: #222222;
+}
+
+.page-intro__content > * {
+    margin: 0;
+}
+
+.page-intro__content a {
+    border-bottom: 1px solid rgba(17, 17, 17, 0.25);
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.page-intro__content a:hover,
+.page-intro__content a:focus {
+    color: #666666;
+    border-color: rgba(17, 17, 17, 0.45);
+}
+
+.page-intro__content ul,
+.page-intro__content ol {
+    padding-left: 1.2em;
+}
+
+.page-intro__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+}
+
+@media (max-width: 960px) {
+    .page-intro {
+        padding: 32px 0 80px;
+        gap: 56px;
+    }
+
+    .page-intro__entry {
+        gap: 36px;
+    }
+
+    .page-intro__content {
+        gap: 2.2rem;
+    }
+}
+
 .no-entries {
     font-size: 1rem;
     letter-spacing: 0.06em;
