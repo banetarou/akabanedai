@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiet Portfolio Gallery</title>
+    <style>
+        :root {
+            color-scheme: only light;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Yu Mincho", "游明朝体", Georgia, serif;
+            background-color: #ffffff;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 全体レイアウト */
+        .layout {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 0;
+        }
+
+        /* 左カラム */
+        .sidebar {
+            position: sticky;
+            top: 0;
+            align-self: start;
+            padding: 48px 40px;
+            border-right: 1px solid #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .sidebar-header {
+            margin-bottom: 48px;
+        }
+
+        .site-title {
+            font-size: 28px;
+            letter-spacing: 0.1em;
+            margin: 0 0 24px;
+        }
+
+        .site-description {
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+        }
+
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            margin-bottom: 16px;
+            font-size: 16px;
+            letter-spacing: 0.08em;
+        }
+
+        .menu li:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidebar-footer {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* 右カラム */
+        .content {
+            padding: 64px 80px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 0 0 24px;
+        }
+
+        /* ギャラリー */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 32px;
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .gallery-caption {
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            color: #444444;
+        }
+
+        /* テキストセクション */
+        .intro {
+            max-width: 680px;
+            margin-bottom: 72px;
+            font-size: 16px;
+            letter-spacing: 0.04em;
+        }
+
+        .intro p {
+            margin: 0 0 16px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-spacer {
+            margin-top: 96px;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 1024px) {
+            .layout {
+                grid-template-columns: 280px 1fr;
+            }
+
+            .content {
+                padding: 56px 48px;
+            }
+
+            .gallery {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                min-height: auto;
+                border-right: none;
+                border-bottom: 1px solid #e5e5e5;
+                padding: 32px 24px;
+            }
+
+            .content {
+                padding: 40px 24px 64px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 全体レイアウト -->
+    <div class="layout">
+        <!-- 左カラム -->
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-header">
+                    <h1 class="site-title">Isao Nishiyama</h1>
+                    <p class="site-description">Photographer / Visual Artist</p>
+                </div>
+                <nav aria-label="メインメニュー">
+                    <ul class="menu">
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#biography">Biography</a></li>
+                        <li><a href="#exhibitions">Exhibitions</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                © 2024 Isao Nishiyama
+            </div>
+        </aside>
+
+        <!-- 右カラム -->
+        <main class="content">
+            <!-- イントロダクション -->
+            <section class="intro" id="biography">
+                <h2 class="section-title">Biography</h2>
+                <p>静謐な光と影の揺らぎに焦点をあて、都市と自然の境界線を見つめ続ける写真家。国内外のギャラリーにて個展を開催し、現代の風景と記憶の関係をテーマに制作を行う。</p>
+                <p>このポートフォリオでは、近年の代表的なシリーズから選りすぐりの作品を掲載しています。作品を通じて、時間と空間が交差する感覚を共有できれば幸いです。</p>
+            </section>
+
+            <!-- ギャラリー -->
+            <section id="gallery">
+                <h2 class="section-title">Selected Works</h2>
+                <div class="gallery">
+                    <article class="gallery-item">
+                        <img src="photo01.jpg" alt="作品写真1">
+                        <p class="gallery-caption">Silent Horizon, 2023</p>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="photo02.jpg" alt="作品写真2">
+                        <p class="gallery-caption">Dawn Sequence, 2023</p>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="photo03.jpg" alt="作品写真3">
+                        <p class="gallery-caption">River Mist, 2022</p>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="photo04.jpg" alt="作品写真4">
+                        <p class="gallery-caption">Night Bloom, 2022</p>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="photo05.jpg" alt="作品写真5">
+                        <p class="gallery-caption">Echoed Streets, 2021</p>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="photo06.jpg" alt="作品写真6">
+                        <p class="gallery-caption">Fragmented Sea, 2021</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 展覧会情報 -->
+            <section class="intro section-spacer" id="exhibitions">
+                <h2 class="section-title">Exhibitions</h2>
+                <p>2024　個展「Tracing Light」 / Gallery One, Tokyo</p>
+                <p>2023　グループ展「Between Silence」 / Neue Galerie, Berlin</p>
+                <p>2022　個展「Urban Stillness」 / The White Room, Kyoto</p>
+                <p>2020　レジデンスプログラム「Northern Lights」 / Reykjavik Art Center</p>
+            </section>
+
+            <!-- コンタクト -->
+            <section class="intro section-spacer" id="contact">
+                <h2 class="section-title">Contact</h2>
+                <p>作品や展示に関するお問い合わせは、<a href="mailto:studio@example.com">studio@example.com</a> までご連絡ください。</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
