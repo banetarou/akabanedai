@@ -13,9 +13,13 @@
 <?php wp_body_open(); ?>
 <header id="masthead" class="site-header" role="banner">
     <div class="site-branding">
-        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+        <h1 class="site-title"><?php echo esc_html( apply_filters( 'minimal_gallery_site_title', 'DAI AKABANE' ) ); ?></h1>
         <?php
         $minimal_gallery_description = get_bloginfo( 'description', 'display' );
+        if ( ! $minimal_gallery_description ) {
+            $minimal_gallery_description = __( 'Composer / Pianist', 'minimal-gallery' );
+        }
+
         if ( $minimal_gallery_description ) :
             ?>
             <p class="site-description"><?php echo esc_html( $minimal_gallery_description ); ?></p>
