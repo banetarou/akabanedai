@@ -11,24 +11,30 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header class="site-header" role="banner">
-    <h1 class="site-title">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-    </h1>
-
-    <?php if ( has_nav_menu( 'primary' ) ) : ?>
-        <nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'achirabe' ); ?>">
-            <?php
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'primary',
-                    'container'      => false,
-                    'depth'          => 1,
-                )
-            );
+<header id="masthead" class="site-header" role="banner">
+    <div class="site-branding">
+        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+        <?php
+        $minimal_gallery_description = get_bloginfo( 'description', 'display' );
+        if ( $minimal_gallery_description ) :
             ?>
-        </nav>
-    <?php endif; ?>
+            <p class="site-description"><?php echo esc_html( $minimal_gallery_description ); ?></p>
+        <?php endif; ?>
+    </div>
+
+    <nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'minimal-gallery' ); ?>">
+        <?php
+        wp_nav_menu(
+            array(
+                'theme_location' => 'primary',
+                'menu_id'        => 'primary-menu',
+                'container'      => '',
+                'depth'          => 1,
+                'fallback_cb'    => 'minimal_gallery_primary_menu_fallback',
+            )
+        );
+        ?>
+    </nav>
 </header>
 
 <div class="wrapper site-frame">

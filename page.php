@@ -17,7 +17,9 @@ if ( have_posts() ) :
                         <p class="page-intro__subtitle"><?php echo esc_html( get_the_excerpt() ); ?></p>
                     <?php endif; ?>
 
-                    <h1 class="page-intro__title"><?php the_title(); ?></h1>
+                    <?php if ( get_the_title() ) : ?>
+                        <h1 class="page-intro__title"><?php the_title(); ?></h1>
+                    <?php endif; ?>
                 </header>
 
                 <div class="page-intro__content">
