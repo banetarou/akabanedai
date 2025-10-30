@@ -8,39 +8,39 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package achirabe
+ * @package akabanedai
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses achirabe_header_style()
+ * @uses akabanedai_header_style()
  */
-function achirabe_custom_header_setup() {
+function akabanedai_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'achirabe_custom_header_args',
+			'akabanedai_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'achirabe_header_style',
+				'wp-head-callback'   => 'akabanedai_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'achirabe_custom_header_setup' );
+add_action( 'after_setup_theme', 'akabanedai_custom_header_setup' );
 
-if ( ! function_exists( 'achirabe_header_style' ) ) :
+if ( ! function_exists( 'akabanedai_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see achirabe_custom_header_setup().
+	 * @see akabanedai_custom_header_setup().
 	 */
-	function achirabe_header_style() {
+	function akabanedai_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

@@ -1,27 +1,38 @@
 <?php
 /**
- * Template Name: Intro Page
- * Description: Reproduces nishiyamaisao.com/intro layout
+ * The template for displaying all pages
  *
- * @package Akabane_Custom
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package akabanedai
  */
+
 get_header();
 ?>
-<main id="primary" class="site-main intro-page">
-  <?php if ( have_posts() ) : ?>
-    <?php while ( have_posts() ) : the_post(); ?>
-    <section class="intro-hero">
-      <p class="lead-text"><?php echo esc_html( get_post_meta( get_the_ID(), 'lead_text', true ) ?: get_the_excerpt() ); ?></p>
-    </section>
 
-    <section class="intro-body">
-      <?php get_template_part( 'template-parts/content', 'intro' ); ?>
-    </section>
-    <?php endwhile; ?>
-  <?php endif; ?>
+	<main id="primary" class="site-main">
 
-  <footer class="intro-footer">
-    <p class="footer-note">© Akabane Project</p>
-  </footer>
-</main>
-<?php get_footer(); ?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
+
+			get_template_part( 'template-parts/content', 'page' );
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+		?>
+
+	</main><!-- #main -->
+
+<?php
+get_sidebar();
+get_footer();

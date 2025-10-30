@@ -1,21 +1,21 @@
 /*!
-Theme Name: achirabe
+Theme Name: akabanedai
 Theme URI: https://underscores.me/
 Author: Automattic
 Author URI: https://automattic.com/
-Description: Hi. I'm a starter theme called <code>achirabe</code>, or <em>underscores</em>, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+Description: Hi. I'm a starter theme called <code>akabanedai</code>, or <em>underscores</em>, if you like. I'm a theme meant for hacking so don't use me as a <em>Parent Theme</em>. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 Version: 1.0.0
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: LICENSE
-Text Domain: achirabe
+Text Domain: akabanedai
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned.
 
-achirabe is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+akabanedai is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
@@ -641,34 +641,6 @@ textarea {
 # Layouts
 --------------------------------------------------------------*/
 
-.site-layout {
-        display: flex;
-        min-height: 100vh;
-}
-
-.site-header {
-        flex: 0 0 200px;
-        width: 200px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-}
-
-.site-main-column {
-        flex: 1 1 auto;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-}
-
-.site-main-column > * {
-        width: 100%;
-}
-
-#primary {
-        flex: 1 1 auto;
-}
-
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
@@ -721,21 +693,8 @@ textarea {
 }
 
 .main-navigation a {
-        display: block;
-        text-decoration: none;
-}
-
-.site-header .main-navigation {
-        flex: 1 1 auto;
-        width: 100%;
-}
-
-.site-header .main-navigation ul {
-        flex-direction: column;
-}
-
-.site-header .main-navigation.toggled ul {
-        display: flex;
+	display: block;
+	text-decoration: none;
 }
 
 /* Small menu. */
@@ -750,13 +709,9 @@ textarea {
 		display: none;
 	}
 
-        .main-navigation ul {
-                display: flex;
-        }
-
-        .site-header .main-navigation ul {
-                display: flex;
-        }
+	.main-navigation ul {
+		display: flex;
+	}
 }
 
 .site-main .comment-navigation,
@@ -830,26 +785,6 @@ textarea {
 
 .widget select {
 	max-width: 100%;
-}
-
-.widget_recent_works .recent-works-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-}
-
-.widget_recent_works .recent-works-link {
-        position: relative;
-        display: block;
-        overflow: hidden;
-        aspect-ratio: 1 / 1;
-}
-
-.widget_recent_works .recent-works-link img {
-        display: block;
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
 }
 
 /* Media
