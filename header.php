@@ -11,33 +11,25 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div class="wrapper site-frame">
-    <aside class="site-header site-sidebar" role="banner">
-        <div class="site-branding">
-            <h1 class="site-title">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-            </h1>
-            <?php
-            $description = get_bloginfo( 'description', 'display' );
-            if ( $description || is_customize_preview() ) :
-                ?>
-                <p class="site-description"><?php echo esc_html( $description ); ?></p>
-            <?php endif; ?>
-        </div>
+<header class="site-header" role="banner">
+    <h1 class="site-title">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+    </h1>
 
-        <?php if ( has_nav_menu( 'primary' ) ) : ?>
-            <nav class="site-navigation" aria-label="Primary menu">
-                <?php
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'primary',
-                        'container'      => false,
-                        'menu_class'     => 'site-menu',
-                        'depth'          => 1,
-                    )
-                );
-                ?>
-            </nav>
-        <?php endif; ?>
-    </aside>
-    <main id="primary" class="content-area site-main" role="main">
+    <?php if ( has_nav_menu( 'primary' ) ) : ?>
+        <nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'achirabe' ); ?>">
+            <?php
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'primary',
+                    'container'      => false,
+                    'depth'          => 1,
+                )
+            );
+            ?>
+        </nav>
+    <?php endif; ?>
+</header>
+
+<div class="wrapper site-frame">
+    <main id="primary" class="site-main" role="main">
