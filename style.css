@@ -48,12 +48,6 @@ a:focus {
     text-decoration: underline;
 }
 
-.wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 72px 64px;
-}
-
 .site-header {
     position: fixed;
     top: 0;
@@ -104,54 +98,58 @@ a:focus {
     text-decoration: underline;
 }
 
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 64px;
+}
+
 .site-frame {
-    margin-left: max(25vw, 260px);
+    max-width: none;
+    width: 75vw;
+    margin: 0;
+    margin-left: 25vw;
+    padding: 64px;
 }
 
 .site-main {
     width: 100%;
 }
 
-.gallery-list {
+
+.gallery-main {
     display: flex;
     flex-direction: column;
     gap: 96px;
 }
 
-.gallery-item {
+.gallery-entry {
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-.gallery-media {
+.gallery-entry__thumbnail {
     margin: 0;
 }
 
-.gallery-header {
-    margin: 0;
-}
-
-.gallery-title {
+.gallery-entry__title {
     margin: 0;
     font-size: 1.3rem;
     font-weight: 400;
     letter-spacing: 0.06em;
 }
 
-.gallery-title a {
-    text-decoration: none;
-}
-
-.gallery-description {
+.gallery-entry__content {
     font-size: 1rem;
 }
 
-.gallery-description p {
+.gallery-entry__content p {
     margin: 0 0 1.6em;
 }
 
-.gallery-description p:last-child {
+.gallery-entry__content p:last-child {
     margin-bottom: 0;
 }
 
@@ -188,7 +186,7 @@ footer.site-footer p {
         padding: 60px 48px;
     }
 
-    .gallery-list {
+    .gallery-main {
         gap: 64px;
     }
 
@@ -207,7 +205,9 @@ footer.site-footer p {
     }
 
     .site-frame {
+        width: 100%;
         margin-left: 0;
+        padding: 48px 32px;
     }
 
     .site-header {
@@ -236,7 +236,7 @@ footer.site-footer p {
         padding: 20px;
     }
 
-    .gallery-item {
+    .gallery-entry {
         gap: 24px;
     }
 

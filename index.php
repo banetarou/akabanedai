@@ -5,35 +5,23 @@
 get_header();
 ?>
 
-<section class="gallery-list">
+<section class="gallery-main">
     <?php
     if ( have_posts() ) :
         while ( have_posts() ) :
             the_post();
             ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class( 'gallery-item' ); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php post_class( 'gallery-entry' ); ?>>
                 <?php if ( has_post_thumbnail() ) : ?>
-                    <figure class="gallery-media">
+                    <div class="gallery-entry__thumbnail">
                         <?php the_post_thumbnail( 'large' ); ?>
-                    </figure>
+                    </div>
                 <?php endif; ?>
 
-                <header class="gallery-header">
-                    <h2 class="gallery-title">
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                    </h2>
-                </header>
+                <h2 class="gallery-entry__title"><?php the_title(); ?></h2>
 
-                <div class="gallery-description">
+                <div class="gallery-entry__content">
                     <?php the_content(); ?>
-                    <?php
-                    wp_link_pages(
-                        array(
-                            'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'minimal-gallery' ),
-                            'after'  => '</div>',
-                        )
-                    );
-                    ?>
                 </div>
             </article>
             <?php
