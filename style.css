@@ -24,11 +24,18 @@ html {
 body {
     margin: 0;
     background-color: #ffffff;
-    color: #000000;
-    font-family: "游明朝", "Yu Mincho", "YuMincho", Georgia, serif;
+    color: #111111;
+    font-family: "游明朝体", "Yu Mincho", "YuMincho", Georgia, serif;
     font-size: 16px;
     line-height: 1.9;
     letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 a {
@@ -42,122 +49,206 @@ a:focus {
 }
 
 .wrapper {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 40px;
+    padding: 72px 64px;
 }
 
-.layout {
-    display: flex;
+.site-frame {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    column-gap: 96px;
     align-items: flex-start;
-    gap: 60px;
 }
 
 .site-sidebar {
-    position: fixed;
-    width: 25%;
-    max-width: 250px;
+    position: sticky;
+    top: 72px;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    min-height: calc(100vh - 144px);
+}
+
+.site-branding {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .site-title {
-    font-size: 1.8rem;
-    margin: 0 0 40px;
-    font-weight: normal;
+    margin: 0;
+    font-size: 1.85rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+.site-title a {
+    text-decoration: none;
 }
 
 .site-description {
-    margin: 0 0 40px;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
+    margin: 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
 }
 
 .site-navigation {
-    margin: 0;
-}
-
-.site-navigation ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.site-navigation li {
-    margin-bottom: 16px;
     font-size: 0.95rem;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
 }
 
-.site-navigation li:last-child {
-    margin-bottom: 0;
+.site-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-.site-navigation a {
-    display: inline-block;
+.site-menu li {
+    margin: 0;
+}
+
+.site-menu a {
     padding-bottom: 4px;
 }
 
-.content-area {
-    margin-left: calc(25% + 60px);
-    flex: 1;
+.site-main {
+    width: 100%;
+}
+
+.gallery-list {
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
 }
 
 .gallery-item {
-    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
+.gallery-media {
+    margin: 0;
+}
+
+.gallery-header {
+    margin: 0;
 }
 
 .gallery-title {
-    font-size: 1.2rem;
-    margin: 0 0 12px;
-    font-weight: normal;
-    letter-spacing: 0.03em;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
 }
 
-.gallery-caption {
-    margin-top: 16px;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
+.gallery-title a {
+    text-decoration: none;
+}
+
+.gallery-description {
+    font-size: 1rem;
 }
 
 .gallery-description p {
     margin: 0 0 1.6em;
 }
 
-.page-content,
-.entry-content {
-    margin-bottom: 60px;
+.gallery-description p:last-child {
+    margin-bottom: 0;
+}
+
+.page-links {
+    margin-top: 24px;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+}
+
+.no-entries {
+    font-size: 1rem;
+    letter-spacing: 0.06em;
 }
 
 footer.site-footer {
     margin-top: 120px;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
+    padding: 0;
+    text-align: left;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
 }
 
-/* Responsive adjustments for small devices */
-@media (max-width: 768px) {
+footer.site-footer .wrapper {
+    padding: 48px 64px;
+}
+
+footer.site-footer p {
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1080px) {
+    .wrapper {
+        padding: 60px 48px;
+    }
+
+    .site-frame {
+        column-gap: 64px;
+    }
+
+    .site-sidebar {
+        top: 60px;
+        min-height: calc(100vh - 120px);
+    }
+}
+
+@media (max-width: 900px) {
+    .wrapper {
+        padding: 48px 32px;
+    }
+
+    .site-frame {
+        grid-template-columns: 1fr;
+        row-gap: 48px;
+    }
+
+    .site-sidebar {
+        position: relative;
+        top: auto;
+        min-height: auto;
+    }
+
+    .gallery-list {
+        gap: 64px;
+    }
+
+    footer.site-footer {
+        margin-top: 72px;
+    }
+
+    footer.site-footer .wrapper {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 540px) {
+    body {
+        font-size: 15px;
+    }
+
     .wrapper {
         padding: 40px 24px;
     }
 
-    .layout {
-        flex-direction: column;
-        gap: 40px;
+    .gallery-item {
+        gap: 24px;
     }
 
-    .site-sidebar {
-        position: static;
-        width: 100%;
-        max-width: none;
-    }
-
-    .content-area {
-        margin-left: 0;
-        width: 100%;
+    footer.site-footer .wrapper {
+        padding: 28px 24px;
     }
 }
