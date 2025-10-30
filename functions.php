@@ -160,6 +160,90 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
+ * Register custom post types used by the theme.
+ */
+function akabanedai_register_post_types() {
+        $labels = array(
+                'name'                  => _x( 'Works', 'Post Type General Name', 'akabanedai' ),
+                'singular_name'         => _x( 'Work', 'Post Type Singular Name', 'akabanedai' ),
+                'menu_name'             => _x( 'Works', 'Admin Menu text', 'akabanedai' ),
+                'name_admin_bar'        => _x( 'Work', 'Add New on Toolbar', 'akabanedai' ),
+                'add_new'               => __( 'Add New', 'akabanedai' ),
+                'add_new_item'          => __( 'Add New Work', 'akabanedai' ),
+                'new_item'              => __( 'New Work', 'akabanedai' ),
+                'edit_item'             => __( 'Edit Work', 'akabanedai' ),
+                'view_item'             => __( 'View Work', 'akabanedai' ),
+                'all_items'             => __( 'All Works', 'akabanedai' ),
+                'search_items'          => __( 'Search Works', 'akabanedai' ),
+                'parent_item_colon'     => __( 'Parent Works:', 'akabanedai' ),
+                'not_found'             => __( 'No works found.', 'akabanedai' ),
+                'not_found_in_trash'    => __( 'No works found in Trash.', 'akabanedai' ),
+                'featured_image'        => __( 'Work Image', 'akabanedai' ),
+                'set_featured_image'    => __( 'Set work image', 'akabanedai' ),
+                'remove_featured_image' => __( 'Remove work image', 'akabanedai' ),
+                'use_featured_image'    => __( 'Use as work image', 'akabanedai' ),
+                'archives'              => __( 'Work archives', 'akabanedai' ),
+                'insert_into_item'      => __( 'Insert into work', 'akabanedai' ),
+                'uploaded_to_this_item' => __( 'Uploaded to this work', 'akabanedai' ),
+                'filter_items_list'     => __( 'Filter works list', 'akabanedai' ),
+                'items_list_navigation' => __( 'Works list navigation', 'akabanedai' ),
+                'items_list'            => __( 'Works list', 'akabanedai' ),
+        );
+
+        $args = array(
+                'labels'             => $labels,
+                'public'             => true,
+                'publicly_queryable' => true,
+                'show_ui'            => true,
+                'show_in_menu'       => true,
+                'show_in_rest'       => true,
+                'query_var'          => true,
+                'rewrite'            => array( 'slug' => 'works' ),
+                'capability_type'    => 'post',
+                'has_archive'        => true,
+                'hierarchical'       => false,
+                'menu_position'      => 20,
+                'menu_icon'          => 'dashicons-portfolio',
+                'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+        );
+
+        register_post_type( 'works', $args );
+}
+add_action( 'init', 'akabanedai_register_post_types' );
+
+/**
+ * Register taxonomies used by custom post types.
+ */
+function akabanedai_register_taxonomies() {
+        $labels = array(
+                'name'              => _x( 'Work Categories', 'taxonomy general name', 'akabanedai' ),
+                'singular_name'     => _x( 'Work Category', 'taxonomy singular name', 'akabanedai' ),
+                'search_items'      => __( 'Search Work Categories', 'akabanedai' ),
+                'all_items'         => __( 'All Work Categories', 'akabanedai' ),
+                'parent_item'       => __( 'Parent Work Category', 'akabanedai' ),
+                'parent_item_colon' => __( 'Parent Work Category:', 'akabanedai' ),
+                'edit_item'         => __( 'Edit Work Category', 'akabanedai' ),
+                'update_item'       => __( 'Update Work Category', 'akabanedai' ),
+                'add_new_item'      => __( 'Add New Work Category', 'akabanedai' ),
+                'new_item_name'     => __( 'New Work Category Name', 'akabanedai' ),
+                'menu_name'         => __( 'Work Categories', 'akabanedai' ),
+        );
+
+        $args = array(
+                'hierarchical'      => true,
+                'labels'            => $labels,
+                'show_ui'           => true,
+                'show_admin_column' => true,
+                'query_var'         => true,
+                'rewrite'           => array( 'slug' => 'work-category' ),
+                'show_in_rest'      => true,
+        );
+
+        register_taxonomy( 'work_category', array( 'works' ), $args );
+}
+add_action( 'init', 'akabanedai_register_taxonomies' );
+
+/**
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
