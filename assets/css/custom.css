@@ -1,0 +1,51 @@
+.intro-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 120px 24px;
+  background: #fff;
+  color: #111;
+  box-sizing: border-box;
+}
+
+.lead-text {
+  font-size: 1.4rem;
+  line-height: 2.0;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.intro-body p {
+  margin-bottom: 80px;
+}
+
+.intro-body .intro-section {
+  margin: 0;
+}
+
+.intro-body .intro-section > *:last-child {
+  margin-bottom: 0;
+}
+
+.footer-note {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #666;
+  text-align: center;
+  margin-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .intro-page {
+    padding: 80px 16px;
+  }
+
+  .lead-text {
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+  }
+
+  .intro-body p {
+    margin-bottom: 60px;
+  }
+}
