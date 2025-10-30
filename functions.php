@@ -14,16 +14,23 @@ function minimal_gallery_setup() {
         )
     );
 
+    // アイキャッチ画像を有効化
     add_theme_support( 'post-thumbnails' );
-    add_theme_support( 'title-tag' );
 
+    // タイトルタグを有効化
+    add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'minimal_gallery_setup' );
+
+// ナビゲーションメニュー登録
+function akabane_register_menus() {
     register_nav_menus(
         array(
             'primary' => __( 'Primary Menu', 'minimal-gallery' ),
         )
     );
 }
-add_action( 'after_setup_theme', 'minimal_gallery_setup' );
+add_action( 'after_setup_theme', 'akabane_register_menus' );
 
 /**
  * Define the global content width to align embeds with the design width.
