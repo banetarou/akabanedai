@@ -22,6 +22,14 @@ function minimal_gallery_setup() {
 }
 add_action( 'after_setup_theme', 'minimal_gallery_setup' );
 
+// エディター幅とスタイルサポートを設定
+function akabane_editor_styles() {
+    add_theme_support( 'editor-styles' );
+    add_editor_style( 'style.css' );
+    add_theme_support( 'align-wide' );
+}
+add_action( 'after_setup_theme', 'akabane_editor_styles' );
+
 // ナビゲーションメニュー登録
 function akabane_register_menus() {
     register_nav_menus(
