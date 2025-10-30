@@ -26,6 +26,8 @@
         <?php endif; ?>
     </div>
 
+    <?php get_template_part( 'template-parts/sidebar/collections' ); ?>
+
     <nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'minimal-gallery' ); ?>">
         <?php
         wp_nav_menu(
