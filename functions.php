@@ -208,6 +208,52 @@ function akabanedai_register_post_types() {
         );
 
         register_post_type( 'works', $args );
+
+        $blog_labels = array(
+                'name'                  => _x( 'Blogs', 'Post Type General Name', 'akabanedai' ),
+                'singular_name'         => _x( 'Blog', 'Post Type Singular Name', 'akabanedai' ),
+                'menu_name'             => _x( 'Blogs', 'Admin Menu text', 'akabanedai' ),
+                'name_admin_bar'        => _x( 'Blog', 'Add New on Toolbar', 'akabanedai' ),
+                'add_new'               => __( 'Add New', 'akabanedai' ),
+                'add_new_item'          => __( 'Add New Blog', 'akabanedai' ),
+                'new_item'              => __( 'New Blog', 'akabanedai' ),
+                'edit_item'             => __( 'Edit Blog', 'akabanedai' ),
+                'view_item'             => __( 'View Blog', 'akabanedai' ),
+                'all_items'             => __( 'All Blogs', 'akabanedai' ),
+                'search_items'          => __( 'Search Blogs', 'akabanedai' ),
+                'parent_item_colon'     => __( 'Parent Blogs:', 'akabanedai' ),
+                'not_found'             => __( 'No blogs found.', 'akabanedai' ),
+                'not_found_in_trash'    => __( 'No blogs found in Trash.', 'akabanedai' ),
+                'featured_image'        => __( 'Blog Image', 'akabanedai' ),
+                'set_featured_image'    => __( 'Set blog image', 'akabanedai' ),
+                'remove_featured_image' => __( 'Remove blog image', 'akabanedai' ),
+                'use_featured_image'    => __( 'Use as blog image', 'akabanedai' ),
+                'archives'              => __( 'Blog archives', 'akabanedai' ),
+                'insert_into_item'      => __( 'Insert into blog', 'akabanedai' ),
+                'uploaded_to_this_item' => __( 'Uploaded to this blog', 'akabanedai' ),
+                'filter_items_list'     => __( 'Filter blogs list', 'akabanedai' ),
+                'items_list_navigation' => __( 'Blogs list navigation', 'akabanedai' ),
+                'items_list'            => __( 'Blogs list', 'akabanedai' ),
+        );
+
+        $blog_args = array(
+                'labels'             => $blog_labels,
+                'public'             => true,
+                'publicly_queryable' => true,
+                'show_ui'            => true,
+                'show_in_menu'       => true,
+                'show_in_rest'       => true,
+                'query_var'          => true,
+                'rewrite'            => array( 'slug' => 'blog' ),
+                'capability_type'    => 'post',
+                'has_archive'        => true,
+                'hierarchical'       => false,
+                'menu_position'      => 21,
+                'menu_icon'          => 'dashicons-welcome-write-blog',
+                'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'comments' ),
+        );
+
+        register_post_type( 'blog', $blog_args );
 }
 add_action( 'init', 'akabanedai_register_post_types' );
 
@@ -240,6 +286,32 @@ function akabanedai_register_taxonomies() {
         );
 
         register_taxonomy( 'work_category', array( 'works' ), $args );
+
+        $blog_category_labels = array(
+                'name'              => _x( 'Blog Categories', 'taxonomy general name', 'akabanedai' ),
+                'singular_name'     => _x( 'Blog Category', 'taxonomy singular name', 'akabanedai' ),
+                'search_items'      => __( 'Search Blog Categories', 'akabanedai' ),
+                'all_items'         => __( 'All Blog Categories', 'akabanedai' ),
+                'parent_item'       => __( 'Parent Blog Category', 'akabanedai' ),
+                'parent_item_colon' => __( 'Parent Blog Category:', 'akabanedai' ),
+                'edit_item'         => __( 'Edit Blog Category', 'akabanedai' ),
+                'update_item'       => __( 'Update Blog Category', 'akabanedai' ),
+                'add_new_item'      => __( 'Add New Blog Category', 'akabanedai' ),
+                'new_item_name'     => __( 'New Blog Category Name', 'akabanedai' ),
+                'menu_name'         => __( 'Blog Categories', 'akabanedai' ),
+        );
+
+        $blog_category_args = array(
+                'hierarchical'      => true,
+                'labels'            => $blog_category_labels,
+                'show_ui'           => true,
+                'show_admin_column' => true,
+                'query_var'         => true,
+                'rewrite'           => array( 'slug' => 'blog-category' ),
+                'show_in_rest'      => true,
+        );
+
+        register_taxonomy( 'blog_category', array( 'blog' ), $blog_category_args );
 }
 add_action( 'init', 'akabanedai_register_taxonomies' );
 
