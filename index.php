@@ -18,10 +18,23 @@ get_header();
                     </div>
                 <?php endif; ?>
 
-                <h2 class="gallery-entry__title"><?php the_title(); ?></h2>
+                <?php if ( get_the_title() ) : ?>
+                    <h2 class="gallery-entry__title"><?php the_title(); ?></h2>
+                <?php endif; ?>
 
                 <div class="gallery-entry__content">
-                    <?php the_content(); ?>
+                    <?php
+                    the_content();
+
+                    wp_link_pages(
+                        array(
+                            'before'      => '<nav class="page-links" aria-label="' . esc_attr__( 'Post pages', 'minimal-gallery' ) . '">',
+                            'after'       => '</nav>',
+                            'link_before' => '<span>',
+                            'link_after'  => '</span>',
+                        )
+                    );
+                    ?>
                 </div>
             </article>
             <?php
