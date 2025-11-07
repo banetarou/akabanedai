@@ -42,7 +42,7 @@ if ( $project_query->have_posts() ) {
         $has_content = true;
         ?>
         <section class="sidebar-collection sidebar-collection--images">
-            <h2 class="sidebar-collection__title"><?php esc_html_e( 'Project', 'minimal-gallery' ); ?></h2>
+            <h2 class="sidebar-collection__title"><?php esc_html_e( 'Project', 'akabanedai' ); ?></h2>
             <div class="sidebar-collection__grid">
                 <?php echo $project_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </div>
@@ -84,7 +84,7 @@ if ( $family_query->have_posts() ) {
         $has_content = true;
         ?>
         <section class="sidebar-collection sidebar-collection--images">
-            <h2 class="sidebar-collection__title"><?php esc_html_e( 'Family', 'minimal-gallery' ); ?></h2>
+            <h2 class="sidebar-collection__title"><?php esc_html_e( 'Family', 'akabanedai' ); ?></h2>
             <div class="sidebar-collection__grid">
                 <?php echo $family_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </div>
@@ -118,7 +118,7 @@ if ( $about_query->have_posts() ) {
             $has_content = true;
             ?>
             <section class="sidebar-collection sidebar-collection--text">
-                <h2 class="sidebar-collection__title"><?php esc_html_e( 'About', 'minimal-gallery' ); ?></h2>
+                <h2 class="sidebar-collection__title"><?php esc_html_e( 'About', 'akabanedai' ); ?></h2>
                 <div class="sidebar-collection__text text-block">
                     <?php echo wpautop( wp_kses_post( $excerpt ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 </div>
@@ -159,7 +159,7 @@ if ( $blog_query->have_posts() ) {
         $has_content = true;
         ?>
         <section class="sidebar-collection sidebar-collection--list">
-            <h2 class="sidebar-collection__title"><?php esc_html_e( 'Blog', 'minimal-gallery' ); ?></h2>
+            <h2 class="sidebar-collection__title"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></h2>
             <ul class="sidebar-collection__list">
                 <?php echo $blog_items; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </ul>
