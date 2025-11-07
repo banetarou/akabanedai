@@ -8,11 +8,11 @@
     :root {
       color-scheme: only light;
       --base-font: "Yu Mincho", "游明朝", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho", Georgia, serif;
-      --accent-color: #333333;
+      --accent-color: #111111;
       --muted-color: #666666;
       --line-height: 1.9;
-      --max-width: 900px;
       --page-bg: #f8f8f6;
+      --sidebar-width: clamp(280px, 26vw, 420px);
     }
 
     * {
@@ -37,15 +37,142 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.75) 40%, rgba(255, 255, 255, 0) 100%);
       mix-blend-mode: lighten;
       opacity: 0.45;
     }
 
-    main {
-      max-width: var(--max-width);
+    .site-shell {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .site-sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar-width);
+      min-width: 260px;
+      background: #ffffff;
+      border-right: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-inner {
+      flex: 1;
+      padding: 3.2rem 3rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    .site-tagline {
+      margin: 0;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: rgba(0, 0, 0, 0.55);
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: clamp(2.2rem, 3vw, 3.4rem);
+      letter-spacing: 0.28em;
+      line-height: 1.2;
+    }
+
+    .site-nav {
+      margin-top: 0.5rem;
+    }
+
+    .site-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .site-nav li {
+      margin: 0;
+    }
+
+    .site-nav a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      padding-left: 1.6rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .site-nav a::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.6rem;
+      height: 0.6rem;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+      color: rgba(0, 0, 0, 0.55);
+    }
+
+    .site-nav a:hover::before,
+    .site-nav a:focus::before {
+      background-color: currentColor;
+    }
+
+    .sidebar-meta {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: rgba(0, 0, 0, 0.55);
+    }
+
+    .sidebar-meta a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      padding-bottom: 2px;
+    }
+
+    .sidebar-meta a:hover,
+    .sidebar-meta a:focus {
+      border-color: rgba(0, 0, 0, 0.45);
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .sidebar-copy {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: rgba(0, 0, 0, 0.35);
+      margin: 0;
+    }
+
+    .site-main {
+      margin-left: var(--sidebar-width);
+      padding: 5rem clamp(2.5rem, 5vw, 4.2rem) 6rem;
+      flex: 1;
+    }
+
+    .main-inner {
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 7rem 1.8rem 6rem;
     }
 
     .page-layout {
@@ -65,7 +192,7 @@
 
     .image-stack {
       position: sticky;
-      top: 4.5rem;
+      top: 5rem;
       display: flex;
       flex-direction: column;
       gap: clamp(1.8rem, 3vw, 2.6rem);
@@ -97,38 +224,45 @@
       letter-spacing: 0.08em;
     }
 
-    header {
+    .page-hero {
       margin-bottom: 6rem;
-      text-align: center;
+      text-align: left;
     }
 
-    header p {
-      margin: 0 auto 1.8rem;
+    .page-hero .subtitle {
+      display: inline-block;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+      color: rgba(0, 0, 0, 0.35);
+      margin-bottom: 1.8rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.3rem);
+      font-weight: 400;
+      margin: 0 0 2.4rem;
+      line-height: 1.35;
+      letter-spacing: 0.16em;
+    }
+
+    .page-hero p {
+      margin: 0 0 1.8rem;
       font-size: clamp(1.05rem, 1.8vw, 1.4rem);
       line-height: 2.1;
-      color: var(--muted-color);
+      color: rgba(0, 0, 0, 0.72);
     }
 
-    header .subtitle {
-      display: inline-block;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      font-size: 0.65rem;
-      color: rgba(0, 0, 0, 0.35);
-      margin-bottom: 2.5rem;
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 6vw, 3.4rem);
-      font-weight: 400;
-      margin: 0;
-      line-height: 1.3;
-      letter-spacing: 0.16em;
+    .note {
+      font-size: 0.9rem;
+      color: rgba(0, 0, 0, 0.45);
+      letter-spacing: 0.12em;
     }
 
     section {
       margin-bottom: 5.5rem;
       position: relative;
+      scroll-margin-top: 120px;
     }
 
     section::after {
@@ -136,7 +270,7 @@
       display: block;
       width: 60px;
       height: 1px;
-      background-color: rgba(0,0,0,0.15);
+      background-color: rgba(0, 0, 0, 0.15);
       margin: 4rem auto 0;
     }
 
@@ -158,19 +292,6 @@
       line-height: var(--line-height);
     }
 
-    .lead-text {
-      margin-top: 3rem;
-      font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-      line-height: 2.2;
-      color: rgba(0, 0, 0, 0.75);
-    }
-
-    .note {
-      font-size: 0.9rem;
-      color: rgba(0,0,0,0.5);
-      letter-spacing: 0.12em;
-    }
-
     .text-block {
       max-width: 68ch;
       margin: 0;
@@ -179,32 +300,31 @@
     .align-right {
       text-align: right;
       margin-top: -1.5rem;
-      color: rgba(0,0,0,0.45);
+      color: rgba(0, 0, 0, 0.45);
     }
 
     a {
       color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid rgba(0,0,0,0.2);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
       padding-bottom: 2px;
       transition: border-color 0.3s ease, color 0.3s ease;
     }
 
     a:hover,
     a:focus {
-      border-color: rgba(0,0,0,0.45);
-      color: rgba(0,0,0,0.65);
+      border-color: rgba(0, 0, 0, 0.45);
+      color: rgba(0, 0, 0, 0.65);
     }
 
     footer {
       margin-top: 6rem;
       text-align: center;
       font-size: 0.85rem;
-      color: rgba(0,0,0,0.45);
+      color: rgba(0, 0, 0, 0.45);
       padding-bottom: 4rem;
     }
 
-    /* フェードインアニメーション */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -216,14 +336,69 @@
       transform: translateY(0);
     }
 
+    @media (max-width: 1200px) {
+      .site-main {
+        padding-top: 4.2rem;
+      }
+
+      .image-stack {
+        top: 4rem;
+      }
+    }
+
     @media (max-width: 960px) {
+      .site-shell {
+        flex-direction: column;
+      }
+
+      .site-sidebar {
+        position: relative;
+        width: 100%;
+        min-width: auto;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .sidebar-inner {
+        padding: 2.4rem 2rem 2.2rem;
+        gap: 1.8rem;
+      }
+
+      .site-nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem 2rem;
+      }
+
+      .site-nav a {
+        font-size: 0.85rem;
+        padding-left: 1.2rem;
+        letter-spacing: 0.1em;
+      }
+
+      .site-nav a::before {
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+
+      .sidebar-meta {
+        align-items: flex-start;
+        margin-top: 1rem;
+      }
+
+      .site-main {
+        margin-left: 0;
+        padding: 3.6rem 1.8rem 4.8rem;
+      }
+
       .page-layout {
         grid-template-columns: minmax(0, 1fr);
       }
 
       .image-stack {
         position: static;
-        margin-top: 4rem;
+        margin-top: 3.5rem;
       }
     }
 
@@ -232,20 +407,20 @@
         letter-spacing: 0.02em;
       }
 
-      .image-stack {
-        margin-top: 3rem;
+      .site-title {
+        font-size: clamp(2rem, 6vw, 2.6rem);
       }
 
-      .image-card {
-        border-radius: 14px;
+      .site-nav ul {
+        gap: 0.8rem 1.6rem;
       }
 
-      header {
-        margin-bottom: 5rem;
+      .site-main {
+        padding: 3rem 1.4rem 4rem;
       }
 
       section {
-        margin-bottom: 4.8rem;
+        margin-bottom: 4.6rem;
       }
 
       section::after {
@@ -259,80 +434,98 @@
   </style>
 </head>
 <body>
-  <!-- ファーストビュー -->
-  <main>
-    <div class="page-layout">
-      <div class="content-column">
-        <header class="fade-up">
-          <span class="subtitle">introduction</span>
-          <h1>息をひとつ置いて、<br>世界の輪郭にふれる。</h1>
-          <p class="lead-text">都市のどこかで静かに芽吹く声と、まだ名前のない動き。<br>私たちはそれらを抱きとめ、手渡すための余白として存在しています。</p>
-          <p class="note">柔らかな手ざわりのプロジェクト</p>
-        </header>
-
-        <!-- 団体紹介 -->
-        <section class="fade-up">
-          <h2>団体紹介</h2>
-          <div class="text-block">
-            <p>「柔らかな手ざわりのプロジェクト」は、アートと社会実装を横断しながら、日常に潜む微細な気配をすくい上げることを大切にしています。声にならない輪郭、かすかな匂い、消えてしまいそうな出会い。そうしたものに、そっと光を差し込むための実験を続けています。</p>
-            <p>メンバーはアーティスト、研究者、福祉現場の実践者など多様。各地で生まれる小さな活動をひとつずつ編み合わせ、まだ見ぬ未来の社会像を手探りで描いています。</p>
-          </div>
-        </section>
-
-        <!-- 活動趣旨 -->
-        <section class="fade-up">
-          <h2>活動趣旨</h2>
-          <div class="text-block">
-            <p>私たちの活動は「耳をすませること」から始まります。地域に暮らす人びとの声を丁寧に聞き取り、そこから浮かび上がる課題や願いに寄り添いながら、表現のかたちを探っていきます。展覧会やワークショップ、対話の場など、形態はさまざまですが、どの場面でも大切にしているのは“ともにいる”という態度です。</p>
-            <p>活動を通して、社会の中に静かな余白をつくること。誰かの気づきを引き出し、まなざしの重なりを増やすこと。そうした動きを、丁寧に記録し次へと手渡していきたいと考えています。</p>
-          </div>
-        </section>
-
-        <!-- これからの展望 -->
-        <section class="fade-up">
-          <h2>これからの展望</h2>
-          <div class="text-block">
-            <p>これまで出会ってきた人たちと関係を深めながら、さらに多様な領域との連携を目指しています。福祉や教育、地域づくりなど、異なるフィールドが交差することで、まだ見ぬ景色が立ち上がると信じています。</p>
-            <p>今後はオンライン・アーカイブの拡充に加え、移動型の小さなラボを各地で展開予定です。移動先ごとに土地の空気を感じ、共に過ごす時間を紡ぎながら、記憶の余白を更新していきます。</p>
-            <p class="align-right">―― 柔らかな手ざわりのプロジェクト</p>
-          </div>
-        </section>
-
-        <!-- お問い合わせ -->
-        <section class="fade-up">
-          <h2>お問い合わせ</h2>
-          <div class="text-block">
-            <p>プロジェクトへの参加や取材のご相談は、<a href="mailto:hello@example.com">hello@example.com</a> までご連絡ください。活動記録や最新のイベント情報は、<a href="#">ニュースレター</a>でもお届けしています。</p>
-          </div>
-        </section>
-
-        <!-- フッター -->
-        <footer>
-          <p>&copy; 2024 柔らかな手ざわりのプロジェクト</p>
-        </footer>
-      </div>
-
-      <aside class="image-column" aria-label="プロジェクトイメージ">
-        <div class="image-stack">
-          <figure class="image-card fade-up">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="柔らかな光の差し込む森の景色">
-            <figcaption>静かに揺れる木々と光の層が、呼吸のリズムを整える。</figcaption>
-          </figure>
-          <figure class="image-card fade-up">
-            <img src="https://images.unsplash.com/photo-1526481280695-3c46927fc197?auto=format&fit=crop&w=1200&q=80" alt="ワークショップで使われる素材のクローズアップ">
-            <figcaption>触れた人の記憶に残る素材を丁寧に選び、手渡していく。</figcaption>
-          </figure>
-          <figure class="image-card fade-up">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="対話の場で集う人々の様子">
-            <figcaption>小さな輪が広がり、まだ見ぬ風景をともに描き出す。</figcaption>
-          </figure>
+  <div class="site-shell">
+    <aside class="site-sidebar" role="complementary">
+      <div class="sidebar-inner">
+        <p class="site-tagline">Art Director / Designer</p>
+        <p class="site-title" role="heading" aria-level="1">NISHIYAMA ISAO</p>
+        <nav class="site-nav" aria-label="ページ内ナビゲーション">
+          <ul>
+            <li><a href="#section-intro">Intro</a></li>
+            <li><a href="#section-organization">About</a></li>
+            <li><a href="#section-purpose">Purpose</a></li>
+            <li><a href="#section-vision">Vision</a></li>
+            <li><a href="#section-contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="sidebar-meta">
+          <p>Based in Tokyo</p>
+          <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+          <p class="sidebar-copy">© 2024 NISHIYAMA ISAO</p>
         </div>
-      </aside>
-    </div>
-  </main>
+      </div>
+    </aside>
+
+    <main class="site-main">
+      <div class="main-inner">
+        <div class="page-layout">
+          <div class="content-column">
+            <header class="page-hero fade-up" id="section-intro">
+              <span class="subtitle">introduction</span>
+              <h1>息をひとつ置いて、<br>世界の輪郭にふれる。</h1>
+              <p>都市のどこかで静かに芽吹く声と、まだ名前のない動き。私たちはそれらを抱きとめ、手渡すための余白として存在しています。</p>
+              <p class="note">柔らかな手ざわりのプロジェクト</p>
+            </header>
+
+            <section class="fade-up" id="section-organization">
+              <h2>団体紹介</h2>
+              <div class="text-block">
+                <p>「柔らかな手ざわりのプロジェクト」は、アートと社会実装を横断しながら、日常に潜む微細な気配をすくい上げることを大切にしています。声にならない輪郭、かすかな匂い、消えてしまいそうな出会い。そうしたものに、そっと光を差し込むための実験を続けています。</p>
+                <p>メンバーはアーティスト、研究者、福祉現場の実践者など多様。各地で生まれる小さな活動をひとつずつ編み合わせ、まだ見ぬ未来の社会像を手探りで描いています。</p>
+              </div>
+            </section>
+
+            <section class="fade-up" id="section-purpose">
+              <h2>活動趣旨</h2>
+              <div class="text-block">
+                <p>私たちの活動は「耳をすませること」から始まります。地域に暮らす人びとの声を丁寧に聞き取り、そこから浮かび上がる課題や願いに寄り添いながら、表現のかたちを探っていきます。展覧会やワークショップ、対話の場など、形態はさまざまですが、どの場面でも大切にしているのは“ともにいる”という態度です。</p>
+                <p>活動を通して、社会の中に静かな余白をつくること。誰かの気づきを引き出し、まなざしの重なりを増やすこと。そうした動きを、丁寧に記録し次へと手渡していきたいと考えています。</p>
+              </div>
+            </section>
+
+            <section class="fade-up" id="section-vision">
+              <h2>これからの展望</h2>
+              <div class="text-block">
+                <p>これまで出会ってきた人たちと関係を深めながら、さらに多様な領域との連携を目指しています。福祉や教育、地域づくりなど、異なるフィールドが交差することで、まだ見ぬ景色が立ち上がると信じています。</p>
+                <p>今後はオンライン・アーカイブの拡充に加え、移動型の小さなラボを各地で展開予定です。移動先ごとに土地の空気を感じ、共に過ごす時間を紡ぎながら、記憶の余白を更新していきます。</p>
+                <p class="align-right">―― 柔らかな手ざわりのプロジェクト</p>
+              </div>
+            </section>
+
+            <section class="fade-up" id="section-contact">
+              <h2>お問い合わせ</h2>
+              <div class="text-block">
+                <p>プロジェクトへの参加や取材のご相談は、<a href="mailto:hello@example.com">hello@example.com</a> までご連絡ください。活動記録や最新のイベント情報は、<a href="#">ニュースレター</a>でもお届けしています。</p>
+              </div>
+            </section>
+
+            <footer>
+              <p>&copy; 2024 柔らかな手ざわりのプロジェクト</p>
+            </footer>
+          </div>
+
+          <aside class="image-column" aria-label="プロジェクトイメージ">
+            <div class="image-stack">
+              <figure class="image-card fade-up">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="柔らかな光の差し込む森の景色">
+                <figcaption>静かに揺れる木々と光の層が、呼吸のリズムを整える。</figcaption>
+              </figure>
+              <figure class="image-card fade-up">
+                <img src="https://images.unsplash.com/photo-1526481280695-3c46927fc197?auto=format&fit=crop&w=1200&q=80" alt="ワークショップで使われる素材のクローズアップ">
+                <figcaption>触れた人の記憶に残る素材を丁寧に選び、手渡していく。</figcaption>
+              </figure>
+              <figure class="image-card fade-up">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="対話の場で集う人々の様子">
+                <figcaption>小さな輪が広がり、まだ見ぬ風景をともに描き出す。</figcaption>
+              </figure>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
 
   <script>
-    // スクロール時のフェードイン制御
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
