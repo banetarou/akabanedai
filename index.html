@@ -37,67 +37,61 @@
         /* 全体レイアウト */
         .layout {
             min-height: 100vh;
-            display: block;
-            margin-left: 200px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 0;
         }
 
         /* 左カラム */
         .sidebar {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 200px;
-            height: 100vh;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            background-color: #fff;
-            color: #000;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 14px;
-            line-height: 1.6;
-            overflow-y: auto;
+            align-self: start;
+            padding: 48px 40px;
+            border-right: 1px solid #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            background-color: #ffffff;
         }
 
-        .sidebar h1 {
-            margin: 0 0 20px;
-            font-size: 18px;
-            font-weight: normal;
-            letter-spacing: 0.05em;
+        .sidebar-header {
+            margin-bottom: 48px;
         }
 
-        .sidebar p {
+        .site-title {
+            font-size: 28px;
+            letter-spacing: 0.1em;
             margin: 0 0 24px;
-            letter-spacing: 0.05em;
         }
 
-        .sidebar nav ul {
+        .site-description {
+            margin: 0;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+        }
+
+        .menu {
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
-        .sidebar nav ul li {
-            margin-bottom: 12px;
+        .menu li {
+            margin-bottom: 16px;
+            font-size: 16px;
+            letter-spacing: 0.08em;
         }
 
-        .sidebar nav ul li a {
-            text-decoration: none;
-            color: #000;
-            font-size: 13px;
-            letter-spacing: 0.1em;
-            transition: color .2s;
+        .menu li:last-child {
+            margin-bottom: 0;
         }
 
-        .sidebar nav ul li a:hover {
-            color: #555;
-        }
-
-        .sidebar footer {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            font-size: 11px;
-            color: #666;
+        .sidebar-footer {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         /* 右カラム */
@@ -153,6 +147,10 @@
 
         /* レスポンシブ対応 */
         @media (max-width: 1024px) {
+            .layout {
+                grid-template-columns: 280px 1fr;
+            }
+
             .content {
                 padding: 56px 48px;
             }
@@ -164,21 +162,15 @@
 
         @media (max-width: 768px) {
             .layout {
-                margin-left: 0;
+                grid-template-columns: 1fr;
             }
 
             .sidebar {
                 position: static;
-                width: auto;
-                height: auto;
-                padding: 32px 24px;
+                min-height: auto;
+                border-right: none;
                 border-bottom: 1px solid #e5e5e5;
-                overflow: visible;
-            }
-
-            .sidebar footer {
-                position: static;
-                margin-top: 24px;
+                padding: 32px 24px;
             }
 
             .content {
@@ -202,17 +194,23 @@
     <div class="layout">
         <!-- 左カラム -->
         <aside class="sidebar">
-            <h1>Isao Nishiyama</h1>
-            <p>Photographer / Visual Artist</p>
-            <nav aria-label="メインメニュー">
-                <ul>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#biography">Biography</a></li>
-                    <li><a href="#exhibitions">Exhibitions</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <footer>© 2024 Isao Nishiyama</footer>
+            <div>
+                <div class="sidebar-header">
+                    <h1 class="site-title">Isao Nishiyama</h1>
+                    <p class="site-description">Photographer / Visual Artist</p>
+                </div>
+                <nav aria-label="メインメニュー">
+                    <ul class="menu">
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#biography">Biography</a></li>
+                        <li><a href="#exhibitions">Exhibitions</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                © 2024 Isao Nishiyama
+            </div>
         </aside>
 
         <!-- 右カラム -->
