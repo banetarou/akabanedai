@@ -67,6 +67,12 @@
                                         <?php endif; ?>
                                 </div>
 
+                                <div class="site-pages-navigation">
+                                        <a class="site-pages-navigation__link" href="<?php echo esc_url( home_url( '/about' ) ); ?>">
+                                                <?php esc_html_e( 'About', 'akabanedai' ); ?>
+                                        </a>
+                                </div>
+
                                 <div class="works-navigation works-navigation--blog">
                                         <p class="works-heading"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></p>
                                         <?php
@@ -87,17 +93,6 @@
                                         <?php endif; ?>
                                 </div>
 
-                                <nav id="site-navigation" class="main-navigation">
-                                        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'akabanedai' ); ?></button>
-                                        <?php
-                                        wp_nav_menu(
-                                                array(
-                                                        'theme_location' => 'menu-1',
-                                                        'menu_id'        => 'primary-menu',
-                                                )
-                                        );
-                                        ?>
-                                </nav><!-- #site-navigation -->
                         </header><!-- #masthead -->
                 </aside>
 
