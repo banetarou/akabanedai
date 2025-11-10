@@ -57,6 +57,19 @@
                                                 )
                                         );
 
+                                        if ( ! is_wp_error( $akabanedai_work_categories ) && ! empty( $akabanedai_work_categories ) ) :
+                                                ?>
+                                                <ul class="works-category-list">
+                                                        <?php foreach ( $akabanedai_work_categories as $akabanedai_work_category ) : ?>
+                                                                <li><a href="<?php echo esc_url( get_term_link( $akabanedai_work_category ) ); ?>"><?php echo esc_html( $akabanedai_work_category->name ); ?></a></li>
+                                                        <?php endforeach; ?>
+                                                </ul>
+                                        <?php endif; ?>
+                                </div>
+
+                                <div class="works-navigation works-navigation--blog">
+                                        <p class="works-heading"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></p>
+                                        <?php
                                         $akabanedai_blog_categories = get_terms(
                                                 array(
                                                         'taxonomy'   => 'blog_category',
@@ -64,46 +77,12 @@
                                                 )
                                         );
 
-                                        $akabanedai_has_blog_categories = ! is_wp_error( $akabanedai_blog_categories ) && ! empty( $akabanedai_blog_categories );
-                                        $akabanedai_has_work_categories = ! is_wp_error( $akabanedai_work_categories ) && ! empty( $akabanedai_work_categories );
-
-                                        if ( $akabanedai_has_work_categories || $akabanedai_has_blog_categories ) :
+                                        if ( ! is_wp_error( $akabanedai_blog_categories ) && ! empty( $akabanedai_blog_categories ) ) :
                                                 ?>
                                                 <ul class="works-category-list">
-                                                        <?php
-                                                        $akabanedai_blog_inserted = false;
-
-                                                        if ( $akabanedai_has_work_categories ) {
-                                                                foreach ( $akabanedai_work_categories as $akabanedai_work_category ) :
-                                                                        ?>
-                                                                        <li class="works-category-list__item"><a href="<?php echo esc_url( get_term_link( $akabanedai_work_category ) ); ?>"><?php echo esc_html( $akabanedai_work_category->name ); ?></a></li>
-                                                                        <?php
-                                                                        if ( $akabanedai_has_blog_categories && ! $akabanedai_blog_inserted ) {
-                                                                                $akabanedai_work_category_slug      = sanitize_title( $akabanedai_work_category->slug );
-                                                                                $akabanedai_work_category_name_slug = sanitize_title( $akabanedai_work_category->name );
-
-                                                                                if ( 'about' === $akabanedai_work_category_slug || 'about' === $akabanedai_work_category_name_slug ) {
-                                                                                        ?>
-                                                                                        <li class="works-category-list__label works-category-list__label--blog"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></li>
-                                                                                        <?php foreach ( $akabanedai_blog_categories as $akabanedai_blog_category ) : ?>
-                                                                                                <li class="works-category-list__item works-category-list__item--blog"><a href="<?php echo esc_url( get_term_link( $akabanedai_blog_category ) ); ?>"><?php echo esc_html( $akabanedai_blog_category->name ); ?></a></li>
-                                                                                        <?php endforeach; ?>
-                                                                                        <?php
-                                                                                        $akabanedai_blog_inserted = true;
-                                                                                }
-                                                                        }
-                                                                endforeach;
-                                                        }
-
-                                                        if ( $akabanedai_has_blog_categories && ! $akabanedai_blog_inserted ) {
-                                                                ?>
-                                                                <li class="works-category-list__label works-category-list__label--blog"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></li>
-                                                                <?php foreach ( $akabanedai_blog_categories as $akabanedai_blog_category ) : ?>
-                                                                        <li class="works-category-list__item works-category-list__item--blog"><a href="<?php echo esc_url( get_term_link( $akabanedai_blog_category ) ); ?>"><?php echo esc_html( $akabanedai_blog_category->name ); ?></a></li>
-                                                                <?php endforeach; ?>
-                                                                <?php
-                                                        }
-                                                        ?>
+                                                        <?php foreach ( $akabanedai_blog_categories as $akabanedai_blog_category ) : ?>
+                                                                <li><a href="<?php echo esc_url( get_term_link( $akabanedai_blog_category ) ); ?>"><?php echo esc_html( $akabanedai_blog_category->name ); ?></a></li>
+                                                        <?php endforeach; ?>
                                                 </ul>
                                         <?php endif; ?>
                                 </div>
