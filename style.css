@@ -801,12 +801,12 @@ textarea {
 }
 
 .works-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        list-style: none;
-        margin: 0;
-        padding: 0;
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .works-grid__item {
@@ -814,11 +814,11 @@ textarea {
 }
 
 .works-grid__link {
-        aspect-ratio: 1 / 1;
-        display: block;
-        height: 100%;
-        overflow: hidden;
-        position: relative;
+	aspect-ratio: 4 / 3;
+	display: block;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
 .works-grid__image {
