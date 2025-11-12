@@ -402,10 +402,10 @@ input,
 select,
 optgroup,
 textarea {
-	color: #404040;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	font-size: 1rem;
-	line-height: 1.5;
+       color: #000;
+       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+       font-size: 14px;
+       line-height: 1.6;
 }
 
 h1,
@@ -642,29 +642,43 @@ textarea {
 --------------------------------------------------------------*/
 
 .site-layout {
-        display: flex;
-        min-height: 100vh;
+       min-height: 100vh;
 }
 
 .site-header-column {
-        flex: 0 0 200px;
-        width: 200px;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 200px;
+       height: 100vh;
+       background-color: #fff;
+       color: #000;
+       overflow-y: auto;
+       padding: 2.5rem 2rem;
+}
+
+.site-header-column a {
+       color: inherit;
 }
 
 .site-main-column {
-        flex: 1 1 auto;
-        min-width: 0;
+       margin-left: 200px;
+       min-height: 100vh;
+       padding: 3rem 4rem;
 }
 
 @media screen and (max-width: 782px) {
-        .site-layout {
-                flex-direction: column;
+       .site-header-column {
+               position: static;
+                width: 100%;
+               height: auto;
+               padding: 2rem 1.5rem;
         }
 
-        .site-header-column {
-                width: 100%;
-                flex-basis: auto;
-        }
+       .site-main-column {
+               margin-left: 0;
+               padding: 2.5rem 1.5rem;
+       }
 }
 
 @media screen and (min-width: 37.5em) {
