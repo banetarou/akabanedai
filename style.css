@@ -736,6 +736,11 @@ textarea {
 
 .site-header-nav {
 	margin-top: 20px;
+	color: lightgreen;
+}
+
+.site-header-nav a {
+	color: lightgreen !important;
 }
 
 /* Small menu. */
