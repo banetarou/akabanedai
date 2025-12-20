@@ -47,8 +47,8 @@
                                         <?php endif; ?>
                                 </div><!-- .site-branding -->
 
-                                <div class="works-navigation">
-                                        <p class="works-heading"><?php esc_html_e( 'Works', 'akabanedai' ); ?></p>
+                                <div class="site-header-nav site-header-nav--works">
+                                        <p class="site-header-nav__heading"><?php esc_html_e( 'Works', 'akabanedai' ); ?></p>
                                         <?php
                                         $akabanedai_work_categories = get_terms(
                                                 array(
@@ -67,14 +67,14 @@
                                         <?php endif; ?>
                                 </div>
 
-                                <div class="site-pages-navigation">
-                                        <a class="site-pages-navigation__link" href="<?php echo esc_url( home_url( '/about' ) ); ?>">
+                                <div class="site-header-nav site-header-nav--pages">
+                                        <a class="site-header-nav__link" href="<?php echo esc_url( home_url( '/about' ) ); ?>">
                                                 <?php esc_html_e( 'About', 'akabanedai' ); ?>
                                         </a>
                                 </div>
 
-                                <div class="works-navigation works-navigation--blog">
-                                        <p class="works-heading"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></p>
+                                <div class="site-header-nav site-header-nav--blog">
+                                        <p class="site-header-nav__heading"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></p>
                                         <?php
                                         $akabanedai_blog_categories = get_terms(
                                                 array(
