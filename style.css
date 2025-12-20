@@ -674,7 +674,7 @@ textarea {
 
 .site-title {
 	font-size: 2em;
-	margin: 0.67em 0;
+	font-weight: 300;
 }
 
 .works-category-list {
@@ -732,6 +732,11 @@ textarea {
 .main-navigation a {
 	display: block;
 	text-decoration: none;
+}
+
+.site-pages-navigation,
+.works-navigation {
+	margin-top: 20px;
 }
 
 /* Small menu. */
