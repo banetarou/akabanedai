@@ -677,15 +677,6 @@ textarea {
 	font-weight: 300;
 }
 
-.works-category-list {
-	margin: 0;
-	list-style: none;
-}
-
-.works-category-list a {
-	color: #333;
-}
-
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
@@ -744,7 +735,16 @@ textarea {
 }
 
 .site-header-nav a {
-	color: lightgreen !important;
+	color: lightgreen;
+}
+
+.works-category-list {
+	margin: 0;
+	list-style: none;
+}
+
+.works-category-list a {
+	color: #333;
 }
 
 /* Small menu. */
