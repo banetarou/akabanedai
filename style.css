@@ -677,6 +677,14 @@ textarea {
 	font-weight: 300;
 }
 
+.site-title a,
+.site-title a:hover ,
+.site-title a:link,
+.site-title a:active,
+.site-title a:visitec {
+  color: #333;
+}
+
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
