@@ -13,7 +13,7 @@
 
         <footer id="colophon" class="site-footer">
                 <div class="site-info">
-                        <?php echo esc_html__( '©️akabanedai', 'akabanedai' ); ?>
+				<?php echo wp_kses_post( __( '&copy; akabanedai', 'akabanedai' ) ); ?>
                 </div><!-- .site-info -->
         </footer><!-- #colophon -->
                 </div><!-- .site-main-column -->
