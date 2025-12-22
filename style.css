@@ -683,6 +683,7 @@ textarea {
 .site-title a:active,
 .site-title a:visitec {
   color: #333;
+  opacity: 1;
 }
 
 /* Navigation
