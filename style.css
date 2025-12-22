@@ -672,6 +672,11 @@ textarea {
 # Components
 --------------------------------------------------------------*/
 
+.site-footer {
+	text-align: center;
+	padding: 20px 0;
+}
+
 .site-title {
 	font-size: 2em;
 	font-weight: 300;
