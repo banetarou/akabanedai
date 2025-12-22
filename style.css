@@ -678,10 +678,10 @@ textarea {
 }
 
 .site-title a,
-.site-title a:hover ,
+.site-title a:hover,
 .site-title a:link,
 .site-title a:active,
-.site-title a:visitec {
+.site-title a:visited {
   color: #333;
   opacity: 1;
 }
