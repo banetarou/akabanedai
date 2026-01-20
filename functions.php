@@ -210,6 +210,52 @@ function akabanedai_register_post_types() {
 
         register_post_type( 'works', $args );
 
+        $project_labels = array(
+                'name'                  => _x( 'Projects', 'Post Type General Name', 'akabanedai' ),
+                'singular_name'         => _x( 'Project', 'Post Type Singular Name', 'akabanedai' ),
+                'menu_name'             => _x( 'Projects', 'Admin Menu text', 'akabanedai' ),
+                'name_admin_bar'        => _x( 'Project', 'Add New on Toolbar', 'akabanedai' ),
+                'add_new'               => __( 'Add New', 'akabanedai' ),
+                'add_new_item'          => __( 'Add New Project', 'akabanedai' ),
+                'new_item'              => __( 'New Project', 'akabanedai' ),
+                'edit_item'             => __( 'Edit Project', 'akabanedai' ),
+                'view_item'             => __( 'View Project', 'akabanedai' ),
+                'all_items'             => __( 'All Projects', 'akabanedai' ),
+                'search_items'          => __( 'Search Projects', 'akabanedai' ),
+                'parent_item_colon'     => __( 'Parent Projects:', 'akabanedai' ),
+                'not_found'             => __( 'No projects found.', 'akabanedai' ),
+                'not_found_in_trash'    => __( 'No projects found in Trash.', 'akabanedai' ),
+                'featured_image'        => __( 'Project Image', 'akabanedai' ),
+                'set_featured_image'    => __( 'Set project image', 'akabanedai' ),
+                'remove_featured_image' => __( 'Remove project image', 'akabanedai' ),
+                'use_featured_image'    => __( 'Use as project image', 'akabanedai' ),
+                'archives'              => __( 'Project archives', 'akabanedai' ),
+                'insert_into_item'      => __( 'Insert into project', 'akabanedai' ),
+                'uploaded_to_this_item' => __( 'Uploaded to this project', 'akabanedai' ),
+                'filter_items_list'     => __( 'Filter projects list', 'akabanedai' ),
+                'items_list_navigation' => __( 'Projects list navigation', 'akabanedai' ),
+                'items_list'            => __( 'Projects list', 'akabanedai' ),
+        );
+
+        $project_args = array(
+                'labels'             => $project_labels,
+                'public'             => true,
+                'publicly_queryable' => true,
+                'show_ui'            => true,
+                'show_in_menu'       => true,
+                'show_in_rest'       => true,
+                'query_var'          => true,
+                'rewrite'            => array( 'slug' => 'projects' ),
+                'capability_type'    => 'post',
+                'has_archive'        => true,
+                'hierarchical'       => false,
+                'menu_position'      => 21,
+                'menu_icon'          => 'dashicons-clipboard',
+                'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+        );
+
+        register_post_type( 'projects', $project_args );
+
         $blog_labels = array(
                 'name'                  => _x( 'Blogs', 'Post Type General Name', 'akabanedai' ),
                 'singular_name'         => _x( 'Blog', 'Post Type Singular Name', 'akabanedai' ),
@@ -249,7 +295,7 @@ function akabanedai_register_post_types() {
                 'capability_type'    => 'post',
                 'has_archive'        => true,
                 'hierarchical'       => false,
-                'menu_position'      => 21,
+                'menu_position'      => 22,
                 'menu_icon'          => 'dashicons-welcome-write-blog',
                 'supports'           => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'comments' ),
         );
@@ -287,6 +333,32 @@ function akabanedai_register_taxonomies() {
         );
 
         register_taxonomy( 'work_category', array( 'works' ), $args );
+
+        $project_category_labels = array(
+                'name'              => _x( 'Project Categories', 'taxonomy general name', 'akabanedai' ),
+                'singular_name'     => _x( 'Project Category', 'taxonomy singular name', 'akabanedai' ),
+                'search_items'      => __( 'Search Project Categories', 'akabanedai' ),
+                'all_items'         => __( 'All Project Categories', 'akabanedai' ),
+                'parent_item'       => __( 'Parent Project Category', 'akabanedai' ),
+                'parent_item_colon' => __( 'Parent Project Category:', 'akabanedai' ),
+                'edit_item'         => __( 'Edit Project Category', 'akabanedai' ),
+                'update_item'       => __( 'Update Project Category', 'akabanedai' ),
+                'add_new_item'      => __( 'Add New Project Category', 'akabanedai' ),
+                'new_item_name'     => __( 'New Project Category Name', 'akabanedai' ),
+                'menu_name'         => __( 'Project Categories', 'akabanedai' ),
+        );
+
+        $project_category_args = array(
+                'hierarchical'      => true,
+                'labels'            => $project_category_labels,
+                'show_ui'           => true,
+                'show_admin_column' => true,
+                'query_var'         => true,
+                'rewrite'           => array( 'slug' => 'project-category' ),
+                'show_in_rest'      => true,
+        );
+
+        register_taxonomy( 'project_category', array( 'projects' ), $project_category_args );
 
         $blog_category_labels = array(
                 'name'              => _x( 'Blog Categories', 'taxonomy general name', 'akabanedai' ),
@@ -332,4 +404,3 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
