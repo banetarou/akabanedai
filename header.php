@@ -47,11 +47,11 @@
                                         <?php endif; ?>
                                 </div><!-- .site-branding -->
 
-                                <div class="site-header-nav site-header-nav--works">
-                                        <p class="site-header-nav__heading"><?php esc_html_e( 'Works', 'akabanedai' ); ?></p>
-                                        <?php
-                                        $akabanedai_work_categories = get_terms(
-                                                array(
+								<div class="site-header-nav site-header-nav--works">
+										<p class="site-header-nav__heading"><?php esc_html_e( 'Works', 'akabanedai' ); ?></p>
+										<?php
+										$akabanedai_work_categories = get_terms(
+												array(
                                                         'taxonomy'   => 'work_category',
                                                         'hide_empty' => false,
                                                 )
@@ -64,8 +64,28 @@
                                                                 <li><a href="<?php echo esc_url( get_term_link( $akabanedai_work_category ) ); ?>"><?php echo esc_html( $akabanedai_work_category->name ); ?></a></li>
                                                         <?php endforeach; ?>
                                                 </ul>
-                                        <?php endif; ?>
-                                </div>
+										<?php endif; ?>
+								</div>
+
+								<div class="site-header-nav site-header-nav--projects">
+										<p class="site-header-nav__heading"><?php esc_html_e( 'Projects', 'akabanedai' ); ?></p>
+										<?php
+										$akabanedai_project_categories = get_terms(
+												array(
+														'taxonomy'   => 'project_category',
+														'hide_empty' => false,
+												)
+										);
+
+										if ( ! is_wp_error( $akabanedai_project_categories ) && ! empty( $akabanedai_project_categories ) ) :
+												?>
+												<ul class="works-category-list">
+														<?php foreach ( $akabanedai_project_categories as $akabanedai_project_category ) : ?>
+																<li><a href="<?php echo esc_url( get_term_link( $akabanedai_project_category ) ); ?>"><?php echo esc_html( $akabanedai_project_category->name ); ?></a></li>
+														<?php endforeach; ?>
+												</ul>
+										<?php endif; ?>
+								</div>
 
                                 <div class="site-header-nav site-header-nav--pages">
                                         <a class="site-header-nav__link" href="<?php echo esc_url( home_url( '/about' ) ); ?>">
