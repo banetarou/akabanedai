@@ -1,1 +1,90 @@
-/* Placeholder for gallery overlay styles. */
+/* ===== Fullscreen overlay for Slick ===== */
+.slick-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background: rgba(0, 0, 0, 0.92);
+  display: none; /* 初期は非表示。JSで開く */
+}
+
+/* 開いている状態 */
+.slick-overlay.is-open {
+  display: block;
+}
+
+/* スクロール止め */
+body.is-slick-overlay-open {
+  overflow: hidden;
+}
+
+/* Slickのルートをフルハイトに */
+.slick-overlay .slick-stage,
+.slick-overlay .slick-list,
+.slick-overlay .slick-track {
+  height: 100%;
+}
+
+/* 1スライド（figure）を中央寄せ */
+.slick-overlay .slick-stage .wp-block-image {
+  height: 100%;
+  margin: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 画像は拡大なし（contain）で収める：端が切れない */
+.slick-overlay .slick-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 矢印・ドットの位置 */
+.slick-overlay .slick-prev,
+.slick-overlay .slick-next {
+  z-index: 2;
+}
+
+.slick-overlay .slick-prev {
+  left: 16px;
+}
+.slick-overlay .slick-next {
+  right: 16px;
+}
+
+.slick-overlay .slick-dots {
+  bottom: 14px;
+}
+
+/* 閉じるボタン */
+.slick-overlay .slick-overlay-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  border: 0;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.slick-overlay .slick-overlay-close:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+/* ギャラリー本体はページ上では普通に表示したい場合：
+   オーバーレイ表示だけにしたいなら、下のコメント解除で隠せる */
+/*
+.wp-block-gallery-1 {
+  display: none;
+}
+*/
