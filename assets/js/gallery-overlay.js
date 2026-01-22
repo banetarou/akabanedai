@@ -12,8 +12,8 @@ jQuery(function ($) {
   // オーバーレイDOMを作成
   const $overlay = $(`
     <div class="slick-overlay" aria-hidden="true">
-      <button type="button" class="slick-overlay-close" aria-label="Close">×</button>
       <div class="slick-stage"></div>
+      <div class="slick-thumbs" aria-label="Gallery thumbnails"></div>
     </div>
   `);
 
@@ -22,16 +22,23 @@ jQuery(function ($) {
   // ギャラリーをクローンして、内側の figure.wp-block-image をスライドとして使う
   // 余計な class や figure 外側は不要なので、wp-block-imageだけ抽出して入れる
   const $slides = $gallery.find('figure.wp-block-image').clone(true, true);
+  const $thumbSlides = $slides.clone(true, true);
 
-  // aタグで画像がリンクされているテーマの場合、クリック無効化（拡大や遷移しない）
-  $slides.find('a').each(function () {
-    const $a = $(this);
-    // aの中にimgがあるときは、aを剥がしてimgだけ残す
-    const $img = $a.find('img').first();
-    if ($img.length) $a.replaceWith($img);
-  });
+  function stripLinks($items) {
+    // aタグで画像がリンクされているテーマの場合、クリック無効化（拡大や遷移しない）
+    $items.find('a').each(function () {
+      const $a = $(this);
+      // aの中にimgがあるときは、aを剥がしてimgだけ残す
+      const $img = $a.find('img').first();
+      if ($img.length) $a.replaceWith($img);
+    });
+  }
+
+  stripLinks($slides);
+  stripLinks($thumbSlides);
 
   $overlay.find('.slick-stage').append($slides);
+  $overlay.find('.slick-thumbs').append($thumbSlides);
 
   let isInited = false;
 
@@ -40,19 +47,36 @@ jQuery(function ($) {
 
     const $stage = $overlay.find('.slick-stage');
 
+    const $thumbs = $overlay.find('.slick-thumbs');
+    const thumbsToShow = Math.min(8, $thumbSlides.length);
+
     $stage.slick({
       slidesToShow: 1,
       slidesToScroll: 1,
       infinite: true,
       arrows: true,
-      dots: true,
+      dots: false,
       adaptiveHeight: false,
       speed: 700,
       cssEase: 'ease-in-out',
       swipe: true,
       touchMove: true,
+      asNavFor: '.slick-thumbs',
       // 画像サイズに関係なくセンターに保つ（CSS側でflex）
       // centerMode: false,
+    });
+
+    $thumbs.slick({
+      slidesToShow: thumbsToShow,
+      slidesToScroll: 1,
+      asNavFor: '.slick-stage',
+      focusOnSelect: true,
+      arrows: false,
+      dots: false,
+      infinite: true,
+      swipe: true,
+      touchMove: true,
+      variableWidth: true,
     });
 
     isInited = true;
@@ -79,11 +103,6 @@ jQuery(function ($) {
 
     const idx = $(this).index(); // ギャラリー直下のfigure群のindex想定
     openOverlay(idx);
-  });
-
-  // 閉じる
-  $overlay.on('click', '.slick-overlay-close', function () {
-    closeOverlay();
   });
 
   // 背景クリックで閉じる（ステージ外）
