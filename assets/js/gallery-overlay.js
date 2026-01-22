@@ -47,7 +47,8 @@ jQuery(function ($) {
       arrows: true,
       dots: true,
       adaptiveHeight: false,
-      speed: 350,
+      speed: 700,
+      cssEase: 'ease-in-out',
       swipe: true,
       touchMove: true,
       // 画像サイズに関係なくセンターに保つ（CSS側でflex）
@@ -97,6 +98,6 @@ jQuery(function ($) {
     }
   });
 
-  // 「常時オーバーレイで出したい」場合は、次の1行を有効化
-  // openOverlay(0);
+  // 初期ロード時にオーバーレイを開く
+  openOverlay(0);
 });
