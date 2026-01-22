@@ -3,6 +3,14 @@ jQuery(function ($) {
   // 対象ギャラリー（必要なら .wp-block-gallery にしてもOK）
   const GALLERY_SELECTOR = '.wp-block-gallery-1';
 
+  const $body = $('body');
+  if (
+    !$body.hasClass('single-works') &&
+    !$body.hasClass('single-projects')
+  ) {
+    return;
+  }
+
   const $gallery = $(GALLERY_SELECTOR);
   if (!$gallery.length) return;
 
