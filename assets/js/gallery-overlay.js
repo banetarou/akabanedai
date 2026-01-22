@@ -85,6 +85,7 @@ jQuery(function ($) {
       swipe: true,
       touchMove: true,
       variableWidth: true,
+      centerMode: true,
     });
 
     isInited = true;
