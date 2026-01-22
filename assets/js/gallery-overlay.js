@@ -47,7 +47,8 @@ jQuery(function ($) {
       arrows: true,
       dots: true,
       adaptiveHeight: false,
-      speed: 350,
+      speed: 700,
+      cssEase: 'ease-in-out',
       swipe: true,
       touchMove: true,
       // 画像サイズに関係なくセンターに保つ（CSS側でflex）
