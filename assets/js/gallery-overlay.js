@@ -50,13 +50,53 @@ jQuery(function ($) {
 
   let isInited = false;
 
+  function calculateThumbsToShow($thumbs) {
+    const totalThumbs = $thumbSlides.length;
+    if (totalThumbs <= 1) return totalThumbs;
+
+    const thumbsElement = $thumbs.get(0);
+    const thumbsStyle = thumbsElement
+      ? window.getComputedStyle(thumbsElement)
+      : null;
+    const thumbsPadding =
+      (thumbsStyle ? parseFloat(thumbsStyle.paddingLeft) : 0) +
+      (thumbsStyle ? parseFloat(thumbsStyle.paddingRight) : 0);
+
+    let availableWidth = $thumbs.innerWidth();
+    if (!availableWidth) {
+      availableWidth = window.innerWidth - thumbsPadding;
+    }
+
+    const firstThumb = $thumbSlides.get(0);
+    const thumbStyle = firstThumb ? window.getComputedStyle(firstThumb) : null;
+    const thumbWidth = Math.max(
+      thumbStyle ? parseFloat(thumbStyle.width) : 0,
+      firstThumb ? $(firstThumb).outerWidth() : 0,
+      1,
+    );
+
+    const dummySlide = document.createElement('div');
+    dummySlide.className = 'slick-slide';
+    $thumbs.append(dummySlide);
+    const slideStyle = window.getComputedStyle(dummySlide);
+    const slidePadding =
+      parseFloat(slideStyle.paddingLeft) +
+      parseFloat(slideStyle.paddingRight);
+    dummySlide.remove();
+
+    const thumbTotalWidth = Math.max(thumbWidth + slidePadding, 1);
+    const maxFit = Math.floor(availableWidth / thumbTotalWidth);
+
+    return Math.max(1, Math.min(totalThumbs, maxFit || 1));
+  }
+
   function initSlick() {
     if (isInited) return;
 
     const $stage = $overlay.find('.slick-stage');
 
     const $thumbs = $overlay.find('.slick-thumbs');
-    const thumbsToShow = Math.min(8, $thumbSlides.length);
+    const thumbsToShow = calculateThumbsToShow($thumbs);
 
     $stage.slick({
       slidesToShow: 1,
