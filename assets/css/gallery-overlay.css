@@ -78,6 +78,7 @@ body.is-slick-overlay-open {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  transition: none !important;
 }
 
 .slick-overlay .slick-thumbs .slick-slide {
