@@ -20,6 +20,7 @@ jQuery(function ($) {
   // オーバーレイDOMを作成
   const $overlay = $(`
     <div class="slick-overlay" aria-hidden="true">
+      <button class="slick-overlay-index" type="button">index</button>
       <div class="slick-stage"></div>
       <div class="slick-thumbs" aria-label="Gallery thumbnails"></div>
     </div>
@@ -157,6 +158,11 @@ jQuery(function ($) {
   // 背景クリックで閉じる（ステージ外）
   $overlay.on('click', function (e) {
     if ($(e.target).is('.slick-overlay')) closeOverlay();
+  });
+
+  $overlay.on('click', '.slick-overlay-index', function (e) {
+    e.preventDefault();
+    window.history.back();
   });
 
   // ESCで閉じる
