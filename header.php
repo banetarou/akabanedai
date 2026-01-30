@@ -94,7 +94,9 @@
                                 </div>
 
                                 <div class="site-header-nav site-header-nav--blog">
-                                        <p class="site-header-nav__heading"><?php esc_html_e( 'Blog', 'akabanedai' ); ?></p>
+                                        <a class="site-header-nav__heading" href="<?php echo esc_url( get_post_type_archive_link( 'blog' ) ); ?>">
+                                                <?php esc_html_e( 'Blog', 'akabanedai' ); ?>
+                                        </a>
                                         <?php
                                         $akabanedai_blog_categories = get_terms(
                                                 array(
