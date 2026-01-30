@@ -16,7 +16,10 @@
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
 			if ( 'blog' === get_post_type() ) {
-				the_title( '<h2 class="entry-title">', '</h2>' );
+				echo '<h2 class="entry-title">';
+				the_title();
+				echo '<span class="entry-date entry-date--inline">' . esc_html( get_the_date() ) . '</span>';
+				echo '</h2>';
 			} else {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			}
