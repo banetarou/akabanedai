@@ -1066,3 +1066,14 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
+
+/* Blog archive layout */
+.post-type-archive-blog .site-main {
+	padding-left: clamp(24px, 10vw, 200px);
+	padding-right: clamp(24px, 10vw, 200px);
+}
+
+.post-type-archive-blog .site-main img {
+	height: auto;
+	max-width: 100%;
+}

@@ -150,6 +150,21 @@ function akabanedai_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'akabanedai_scripts' );
 
+/**
+ * Redirect blog singular pages to the blog archive.
+ */
+function akabanedai_redirect_blog_singular_to_archive() {
+	if ( is_admin() ) {
+		return;
+	}
+
+	if ( is_singular( 'blog' ) ) {
+		wp_redirect( get_post_type_archive_link( 'blog' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'akabanedai_redirect_blog_singular_to_archive' );
+
 function my_enqueue_slick_overlay_slider() {
 	wp_enqueue_script( 'jquery' );
 
