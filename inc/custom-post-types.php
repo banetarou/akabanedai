@@ -78,7 +78,7 @@ function akabane_register_custom_post_types() {
             'has_archive'       => true,
             'menu_position'     => 8,
             'menu_icon'         => 'dashicons-edit',
-            'supports'          => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+            'supports'          => array( 'title', 'editor', 'excerpt' ),
             'show_in_rest'      => true,
             'rewrite'           => array(
                 'slug'       => 'blog',
