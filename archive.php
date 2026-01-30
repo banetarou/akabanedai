@@ -16,9 +16,7 @@ get_header();
 
 			<header class="page-header">
 				<?php
-				if ( is_tax() ) {
-					echo '<h1 class="page-title">' . esc_html( single_term_title( '', false ) ) . '</h1>';
-				} else {
+				if ( ! is_tax() ) {
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 				}
 				the_archive_description( '<div class="archive-description">', '</div>' );
