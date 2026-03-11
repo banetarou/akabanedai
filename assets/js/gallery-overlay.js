@@ -14,6 +14,8 @@ jQuery(function ($) {
   const $gallery = $(GALLERY_SELECTOR);
   if (!$gallery.length) return;
 
+  const creditText = $('.post.type-works').first().data('credit');
+
   // 既にオーバーレイがある場合は作らない
   if ($('.slick-overlay').length) return;
 
@@ -21,12 +23,17 @@ jQuery(function ($) {
   const $overlay = $(`
     <div class="slick-overlay" aria-hidden="true">
       <button class="slick-overlay-index" type="button">index</button>
+      <div class="slick-overlay-credit"></div>
       <div class="slick-stage"></div>
       <div class="slick-thumbs" aria-label="Gallery thumbnails"></div>
     </div>
   `);
 
   $('body').append($overlay);
+
+  if (creditText) {
+    $overlay.find('.slick-overlay-credit').text(creditText);
+  }
 
   // ギャラリーをクローンして、内側の figure.wp-block-image をスライドとして使う
   // 余計な class や figure 外側は不要なので、wp-block-imageだけ抽出して入れる

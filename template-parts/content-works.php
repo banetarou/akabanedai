@@ -9,7 +9,12 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php
+$credit      = function_exists( 'get_field' ) ? get_field( 'credit' ) : '';
+$credit_attr = $credit ? ' data-credit="' . esc_attr( $credit ) . '"' : '';
+?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?><?php echo $credit_attr; ?>>
 	<div class="entry-content">
 		<?php
 		the_content(

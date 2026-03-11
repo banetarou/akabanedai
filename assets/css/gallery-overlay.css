@@ -27,6 +27,17 @@
   cursor: pointer;
 }
 
+.slick-overlay .slick-overlay-credit {
+  position: absolute;
+  left: 30px;
+  bottom: 100px;
+  z-index: 3;
+  max-width: min(320px, calc(100vw - 60px));
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 /* スクロール止め */
 body.is-slick-overlay-open {
   overflow: hidden;
