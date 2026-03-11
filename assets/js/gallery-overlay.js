@@ -19,10 +19,17 @@ jQuery(function ($) {
   // 既にオーバーレイがある場合は作らない
   if ($('.slick-overlay').length) return;
 
+  const slideCount = $gallery.find('figure.wp-block-image').length;
+  const hasMultipleSlides = slideCount > 1;
+
   // オーバーレイDOMを作成
   const $overlay = $(`
     <div class="slick-overlay" aria-hidden="true">
       <button class="slick-overlay-index" type="button">index</button>
+      <div class="slick-overlay-nav" aria-label="Gallery navigation">
+        <button class="slick-overlay-prev" type="button">previous</button>
+        <button class="slick-overlay-next" type="button">next</button>
+      </div>
       <div class="slick-overlay-credit"></div>
       <div class="slick-stage"></div>
       <div class="slick-thumbs" aria-label="Gallery thumbnails"></div>
@@ -33,6 +40,10 @@ jQuery(function ($) {
 
   if (creditText) {
     $overlay.find('.slick-overlay-credit').text(creditText);
+  }
+
+  if (!hasMultipleSlides) {
+    $overlay.find('.slick-overlay-nav').remove();
   }
 
   // ギャラリーをクローンして、内側の figure.wp-block-image をスライドとして使う
@@ -110,7 +121,7 @@ jQuery(function ($) {
       slidesToShow: 1,
       slidesToScroll: 1,
       infinite: true,
-      arrows: true,
+      arrows: false,
       dots: false,
       adaptiveHeight: false,
       speed: 700,
@@ -170,6 +181,16 @@ jQuery(function ($) {
   $overlay.on('click', '.slick-overlay-index', function (e) {
     e.preventDefault();
     window.history.back();
+  });
+
+  $overlay.on('click', '.slick-overlay-prev', function (e) {
+    e.preventDefault();
+    $overlay.find('.slick-stage').slick('slickPrev');
+  });
+
+  $overlay.on('click', '.slick-overlay-next', function (e) {
+    e.preventDefault();
+    $overlay.find('.slick-stage').slick('slickNext');
   });
 
   // ESCで閉じる
