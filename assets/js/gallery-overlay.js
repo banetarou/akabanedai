@@ -14,7 +14,7 @@ jQuery(function ($) {
   const $gallery = $(GALLERY_SELECTOR);
   if (!$gallery.length) return;
 
-  const creditText = $('.post.type-works').first().data('credit');
+  const creditText = $('.type-works').first().data('credit');
 
   // 既にオーバーレイがある場合は作らない
   if ($('.slick-overlay').length) return;
